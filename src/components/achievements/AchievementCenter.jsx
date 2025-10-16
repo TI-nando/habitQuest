@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from 'react'
+import React, { useState, useMemo, useEffect } from 'react'
 import './AchievementCenter.css'
 import AchievementCard from './AchievementCard'
 import { 
@@ -15,6 +15,24 @@ const AchievementCenter = ({ heroData }) => {
   const [selectedRarity, setSelectedRarity] = useState('all')
   const [sortBy, setSortBy] = useState('rarity') // rarity, progress, alphabetical
   const [showOnlyUnlocked, setShowOnlyUnlocked] = useState(false)
+  const [newAchievements, setNewAchievements] = useState([])
+
+  useEffect(() => {
+    // Detectar novas conquistas
+    if (heroData?.achievements) {
+      const currentAchievements = heroData.achievements
+      const previousAchievements = JSON.parse(localStorage.getItem('previousAchievements') || '[]')
+      
+      const newUnlocked = currentAchievements.filter(id => !previousAchievements.includes(id))
+      
+      if (newUnlocked.length > 0) {
+        setNewAchievements(newUnlocked)
+        setTimeout(() => setNewAchievements([]), 5000)
+      }
+      
+      localStorage.setItem('previousAchievements', JSON.stringify(currentAchievements))
+    }
+  }, [heroData?.achievements])
 
   const achievementStats = useMemo(() => 
     getAchievementStats(heroData), [heroData]

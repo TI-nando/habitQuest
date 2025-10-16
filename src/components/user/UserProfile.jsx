@@ -146,55 +146,62 @@ const UserProfile = () => {
                 <div className="error-message">{errors.general}</div>
               )}
               
-              <div className="form-group">
-                <label>Username</label>
-                <input
-                  type="text"
-                  name="username"
-                  value={editData.username}
-                  onChange={handleInputChange}
-                  className={errors.username ? 'error' : ''}
-                />
-                {errors.username && (
-                  <span className="field-error">{errors.username}</span>
-                )}
-              </div>
+              <div className="form-grid">
+                <div className="form-group">
+                  <label htmlFor="username">Username</label>
+                  <input
+                    id="username"
+                    type="text"
+                    name="username"
+                    value={editData.username}
+                    onChange={handleInputChange}
+                    className={errors.username ? 'error' : ''}
+                    placeholder="Digite seu username"
+                  />
+                  {errors.username && (
+                    <span className="field-error">{errors.username}</span>
+                  )}
+                </div>
 
-              <div className="form-group">
-                <label>Email</label>
-                <input
-                  type="email"
-                  name="email"
-                  value={editData.email}
-                  onChange={handleInputChange}
-                  className={errors.email ? 'error' : ''}
-                />
-                {errors.email && (
-                  <span className="field-error">{errors.email}</span>
-                )}
-              </div>
+                <div className="form-group">
+                  <label htmlFor="email">Email</label>
+                  <input
+                    id="email"
+                    type="email"
+                    name="email"
+                    value={editData.email}
+                    onChange={handleInputChange}
+                    className={errors.email ? 'error' : ''}
+                    placeholder="Digite seu email"
+                  />
+                  {errors.email && (
+                    <span className="field-error">{errors.email}</span>
+                  )}
+                </div>
 
-              <div className="form-group">
-                <label>Título</label>
-                <select
-                  name="title"
-                  value={editData.title}
-                  onChange={handleInputChange}
-                >
-                  {titleOptions.map(title => (
-                    <option key={title} value={title}>{title}</option>
-                  ))}
-                </select>
+                <div className="form-group form-group-full">
+                  <label htmlFor="title">Título do Aventureiro</label>
+                  <select
+                    id="title"
+                    name="title"
+                    value={editData.title}
+                    onChange={handleInputChange}
+                  >
+                    {titleOptions.map(title => (
+                      <option key={title} value={title}>{title}</option>
+                    ))}
+                  </select>
+                </div>
               </div>
 
               <div className="edit-actions">
-                <button className="save-btn" onClick={handleSave}>
+                <button className="save-btn gamified-button" onClick={handleSave}>
                   <span className="btn-icon">💾</span>
-                  Salvar
+                  <span className="btn-text">Salvar Alterações</span>
                 </button>
-                <button className="cancel-btn" onClick={handleCancel}>
+                <button className="cancel-btn gamified-button" onClick={handleCancel}>
                   <span className="btn-icon">❌</span>
-                  Cancelar
+                  <span className="btn-text">Cancelar</span>
                 </button>
               </div>
             </div>

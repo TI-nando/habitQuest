@@ -1,8 +1,11 @@
-import React, { useState } from 'react'
+import React, { useState, useRef } from 'react'
 import './MissionItem.css'
 
 const MissionItem = ({ mission, onComplete, onDelete, onEdit }) => {
   const [isCompleting, setIsCompleting] = useState(false)
+  const [showXPGain, setShowXPGain] = useState(false)
+  const [showGoldGain, setShowGoldGain] = useState(false)
+  const itemRef = useRef(null)
 
   const getDifficultyColor = (difficulty) => {
     switch (difficulty) {
@@ -37,19 +40,68 @@ const MissionItem = ({ mission, onComplete, onDelete, onEdit }) => {
     return date.toLocaleDateString('pt-BR')
   }
 
+  const createFloatingText = (text, className) => {
+    const element = document.createElement('div')
+    element.textContent = text
+    element.className = className
+    element.style.position = 'absolute'
+    element.style.zIndex = '1000'
+    element.style.pointerEvents = 'none'
+    
+    if (itemRef.current) {
+      const rect = itemRef.current.getBoundingClientRect()
+      element.style.left = `${rect.left + rect.width / 2}px`
+      element.style.top = `${rect.top}px`
+      document.body.appendChild(element)
+      
+      setTimeout(() => {
+        document.body.removeChild(element)
+      }, 1500)
+    }
+  }
+
   const handleComplete = async () => {
     if (isCompleting) return
     
     setIsCompleting(true)
+    
+    // Adicionar efeito visual de conclusão
+    if (itemRef.current) {
+      itemRef.current.classList.add('mission-complete-effect')
+    }
+    
     try {
       await onComplete(mission.id)
+      
+      // Mostrar ganhos de XP e Gold
+      const xpGain = mission.rewards?.xp || mission.xpReward || 10
+      const goldGain = mission.rewards?.gold || mission.goldReward || 0
+      
+      setTimeout(() => {
+        createFloatingText(`+${xpGain} XP`, 'xp-gain-effect')
+      }, 200)
+      
+      if (goldGain > 0) {
+        setTimeout(() => {
+          createFloatingText(`+${goldGain} 🪙`, 'gold-gain-effect')
+        }, 400)
+      }
+      
     } finally {
-      setIsCompleting(false)
+      setTimeout(() => {
+        setIsCompleting(false)
+        if (itemRef.current) {
+          itemRef.current.classList.remove('mission-complete-effect')
+        }
+      }, 600)
     }
   }
 
   return (
-    <div className={`todo-item gamified-card ${mission.isCompleted ? 'completed' : ''} ${isCompleting ? 'completing' : ''}`}>
+    <div 
+      ref={itemRef}
+      className={`todo-item gamified-card ${mission.isCompleted ? 'completed' : ''} ${isCompleting ? 'completing' : ''}`}
+    >
       {/* Particles effect */}
       <div className="particles-container">
         <div className="particle"></div>
@@ -60,7 +112,7 @@ const MissionItem = ({ mission, onComplete, onDelete, onEdit }) => {
       {/* Checkbox */}
       <div className="todo-checkbox-container">
         <button
-          className={`todo-checkbox ${mission.isCompleted ? 'checked' : ''}`}
+          className={`todo-checkbox gamified-button ${mission.isCompleted ? 'checked' : ''}`}
           onClick={handleComplete}
           disabled={isCompleting || mission.isCompleted}
         >
