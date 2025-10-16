@@ -41,12 +41,14 @@
 .form-title {
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: var(--spacing-sm);
   margin: 0;
   color: var(--text-primary);
   font-size: var(--font-size-xl);
   font-weight: var(--font-weight-bold);
   text-shadow: var(--text-shadow);
+  text-align: center;
 }
 
 .form-icon {
@@ -155,6 +157,7 @@
   color: var(--text-primary);
   font-size: var(--font-size-base);
   font-weight: var(--font-weight-semibold);
+  text-align: center;
 }
 
 .reward-items {

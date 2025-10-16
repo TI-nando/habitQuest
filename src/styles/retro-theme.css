@@ -1,5 +1,15 @@
 /* Tema Retro Global - HabitQuest */
 
+/* Border Radius - Mais arredondado */
+:root {
+  --border-radius: 16px;
+  --border-radius-sm: 12px;
+  --border-radius-lg: 20px;
+  --border-radius-xl: 28px;
+  --border-radius-2xl: 36px;
+  --border-radius-full: 50px;
+}
+
 /* Aplicação global das fontes retro */
 * {
   font-family: var(--font-retro-secondary) !important;

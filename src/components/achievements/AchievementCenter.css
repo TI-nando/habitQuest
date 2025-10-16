@@ -1,19 +1,20 @@
 /* Achievement Center - Tema Retro */
 .achievement-center {
-  max-width: 1400px;
-  width: 95%;
-  margin: 0 auto;
-  padding: 2rem;
-  background: var(--bg-primary);
-  min-height: 100vh;
-  font-family: var(--font-retro-secondary) !important;
+  background: var(--bg-card);
+  border-radius: var(--border-radius-lg);
+  border: 2px solid var(--border-color);
+  box-shadow: var(--shadow-large);
+  overflow: hidden;
+  height: fit-content;
+  max-width: 100%;
+  padding: var(--spacing-xl);
 }
 
 .achievement-header {
   background: var(--gradient-primary);
-  border-radius: 16px;
-  padding: 2rem;
-  margin-bottom: 2rem;
+  border-radius: var(--border-radius-2xl);
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
   color: var(--text-on-primary);
   box-shadow: var(--shadow-glow);
   border: 2px solid var(--border-neon);
@@ -27,13 +28,14 @@
 }
 
 .center-title {
-  font-size: 2rem;
+  font-size: 1.6rem;
   font-weight: 700;
   margin: 0;
   font-family: var(--font-retro-primary) !important;
   text-shadow: 0 0 15px currentColor;
   letter-spacing: 2px;
   text-transform: uppercase;
+  text-align: center;
 }
 
 .achievement-summary {
@@ -96,9 +98,9 @@
 
 .achievement-filters {
   background: var(--bg-card);
-  border-radius: 12px;
-  padding: 1.5rem;
-  margin-bottom: 2rem;
+  border-radius: var(--border-radius-xl);
+  padding: 1.25rem;
+  margin-bottom: 1.5rem;
   box-shadow: var(--shadow-glow);
   border: 2px solid var(--border-color);
 }
@@ -131,7 +133,7 @@
   gap: 0.5rem;
   padding: 0.75rem 1rem;
   border: 2px solid var(--border-color);
-  border-radius: 25px;
+  border-radius: var(--border-radius-full);
   background: var(--bg-secondary);
   color: var(--text-primary);
   font-size: 0.9rem;
@@ -185,7 +187,7 @@
 .filter-select {
   padding: 0.5rem 1rem;
   border: 2px solid var(--border-color);
-  border-radius: 8px;
+  border-radius: var(--border-radius-lg);
   background: var(--bg-secondary);
   color: var(--text-primary);
   font-size: 0.9rem;
@@ -224,10 +226,10 @@
   display: flex;
   flex-wrap: wrap;
   gap: 1rem;
-  margin-bottom: 2rem;
+  margin-bottom: 1.5rem;
   padding: 1rem;
   background: var(--bg-card);
-  border-radius: 12px;
+  border-radius: var(--border-radius-xl);
   box-shadow: var(--shadow-glow);
   border: 2px solid var(--border-color);
 }
@@ -238,7 +240,7 @@
   gap: 0.5rem;
   padding: 0.5rem 1rem;
   background: var(--bg-secondary);
-  border-radius: 20px;
+  border-radius: var(--border-radius-full);
   font-size: 0.85rem;
   border: 1px solid var(--border-color);
 }
@@ -271,9 +273,9 @@
 .no-achievements {
   grid-column: 1 / -1;
   text-align: center;
-  padding: 4rem 2rem;
+  padding: 3rem 2rem;
   background: var(--bg-card);
-  border-radius: 12px;
+  border-radius: var(--border-radius-xl);
   box-shadow: var(--shadow-glow);
   border: 2px solid var(--border-color);
 }

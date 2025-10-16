@@ -1,15 +1,18 @@
 .hero-dashboard {
   background: var(--bg-card);
-  border-radius: var(--border-radius-large);
+  border-radius: var(--border-radius-lg);
   border: 2px solid var(--border-color);
   box-shadow: var(--shadow-large);
   overflow: hidden;
   height: fit-content;
+  max-width: 800px;
+  width: 100%;
+  margin: 0 auto;
 }
 
 .dashboard-header {
   background: var(--gradient-primary);
-  padding: var(--spacing-lg);
+  padding: var(--spacing-xl);
   text-align: center;
   border-bottom: 2px solid var(--border-color);
 }
@@ -17,21 +20,25 @@
 .dashboard-title {
   font-size: var(--font-size-2xl);
   font-weight: 700;
-  margin: 0 0 var(--spacing-xs) 0;
+  margin: 0 0 var(--spacing-sm) 0;
   text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  font-family: var(--font-retro-primary) !important;
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
 .dashboard-subtitle {
   color: var(--text-secondary);
-  font-size: var(--font-size-sm);
+  font-size: var(--font-size-base);
   opacity: 0.9;
+  font-family: var(--font-retro-secondary) !important;
 }
 
 .dashboard-content {
-  padding: var(--spacing-lg);
+  padding: var(--spacing-xl);
   display: flex;
   flex-direction: column;
-  gap: var(--spacing-lg);
+  gap: var(--spacing-xl);
 }
 
 /* Responsividade */

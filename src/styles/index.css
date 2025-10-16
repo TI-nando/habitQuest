@@ -2,6 +2,7 @@
 @import './variables.css';
 @import './gamification.css';
 @import './retro-theme.css';
+@import './gamification-effects.css';
 
 /* Reset e configurações base */
 * {

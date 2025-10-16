@@ -227,7 +227,15 @@
 .edit-form {
   display: flex;
   flex-direction: column;
+  gap: 24px;
+  max-width: 600px;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   gap: 20px;
+  align-items: start;
 }
 
 .form-group {
@@ -236,17 +244,23 @@
   gap: 8px;
 }
 
+.form-group-full {
+  grid-column: 1 / -1;
+}
+
 .form-group label {
   font-weight: 600;
   color: var(--text-primary);
-  font-size: 0.95rem;
+  font-size: 1rem;
   font-family: var(--font-retro-accent) !important;
   text-shadow: 0 0 5px currentColor;
+  letter-spacing: 0.5px;
+  margin-bottom: 4px;
 }
 
 .form-group input,
 .form-group select {
-  padding: 12px 16px;
+  padding: 14px 16px;
   border: 2px solid var(--border-color);
   border-radius: 12px;
   font-size: 1rem;
@@ -254,6 +268,8 @@
   background: var(--bg-secondary);
   color: var(--text-primary);
   font-family: var(--font-retro-secondary) !important;
+  min-height: 48px;
+  box-sizing: border-box;
 }
 
 .form-group input:focus,
@@ -261,16 +277,25 @@
   outline: none;
   border-color: var(--border-focus);
   box-shadow: var(--shadow-glow);
+  transform: translateY(-1px);
 }
 
 .form-group input::placeholder {
   color: var(--text-muted);
+  font-style: italic;
 }
 
 .form-group input.error,
 .form-group select.error {
   border-color: var(--danger-color);
   box-shadow: 0 0 10px rgba(255, 0, 102, 0.5);
+  animation: shake 0.3s ease-in-out;
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-5px); }
+  75% { transform: translateX(5px); }
 }
 
 .field-error {
@@ -279,23 +304,133 @@
   font-weight: 500;
   font-family: var(--font-retro-secondary) !important;
   text-shadow: 0 0 5px currentColor;
+  margin-top: 4px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.field-error::before {
+  content: '⚠️';
+  font-size: 0.75rem;
 }
 
 .error-message {
   background: var(--danger-bg);
   border: 2px solid var(--danger-color);
   color: var(--danger-color);
-  padding: 12px 16px;
+  padding: 16px 20px;
   border-radius: 12px;
   font-weight: 500;
   font-family: var(--font-retro-secondary) !important;
   text-shadow: 0 0 5px currentColor;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  animation: errorPulse 0.5s ease-in-out;
+}
+
+.error-message::before {
+  content: '🚨';
+  font-size: 1.2rem;
+}
+
+@keyframes errorPulse {
+  0% { transform: scale(0.95); opacity: 0.8; }
+  50% { transform: scale(1.02); opacity: 1; }
+  100% { transform: scale(1); opacity: 1; }
 }
 
 .edit-actions {
-  display: flex;
-  gap: 12px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
   margin-top: 8px;
+  padding-top: 20px;
+  border-top: 2px solid var(--border-color);
+}
+
+.save-btn, .cancel-btn {
+  padding: 16px 24px;
+  border: 2px solid var(--border-neon);
+  border-radius: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--transition-normal);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-size: 1rem;
+  font-family: var(--font-retro-primary) !important;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  min-height: 56px;
+  position: relative;
+  overflow: hidden;
+}
+
+.save-btn {
+  background: var(--gradient-primary);
+  color: var(--text-on-primary);
+  box-shadow: var(--shadow-glow);
+}
+
+.save-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-glow), 0 8px 25px rgba(0, 255, 255, 0.4);
+  text-shadow: 0 0 10px currentColor;
+}
+
+.save-btn:active {
+  transform: translateY(0);
+}
+
+.cancel-btn {
+  background: var(--bg-tertiary);
+  color: var(--text-muted);
+  border-color: var(--border-color);
+}
+
+.cancel-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+  border-color: var(--border-neon);
+  color: var(--text-primary);
+  background: var(--bg-secondary);
+}
+
+.cancel-btn:active {
+  transform: translateY(0);
+}
+
+.btn-icon {
+  font-size: 1.2rem;
+  filter: drop-shadow(0 0 5px currentColor);
+}
+
+.btn-text {
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+/* Responsividade para o formulário */
+@media (max-width: 768px) {
+  .form-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  
+  .edit-actions {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+  
+  .save-btn, .cancel-btn {
+    padding: 14px 20px;
+    font-size: 0.95rem;
+    min-height: 50px;
+  }
 }
 
 /* Profile Stats */

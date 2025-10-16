@@ -1,0 +1,373 @@
+/* Efeitos de Gamificação Avançados - HabitQuest */
+
+/* Animações de Feedback Visual */
+@keyframes levelUp {
+  0% {
+    transform: scale(1) rotate(0deg);
+    opacity: 1;
+  }
+  25% {
+    transform: scale(1.2) rotate(5deg);
+    opacity: 0.9;
+  }
+  50% {
+    transform: scale(1.1) rotate(-3deg);
+    opacity: 0.8;
+  }
+  75% {
+    transform: scale(1.15) rotate(2deg);
+    opacity: 0.9;
+  }
+  100% {
+    transform: scale(1) rotate(0deg);
+    opacity: 1;
+  }
+}
+
+@keyframes xpGain {
+  0% {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: translateY(-20px) scale(1.2);
+    opacity: 0.8;
+  }
+  100% {
+    transform: translateY(-40px) scale(0.8);
+    opacity: 0;
+  }
+}
+
+@keyframes goldGain {
+  0% {
+    transform: translateY(0) scale(1) rotate(0deg);
+    opacity: 1;
+  }
+  25% {
+    transform: translateY(-10px) scale(1.1) rotate(5deg);
+    opacity: 0.9;
+  }
+  50% {
+    transform: translateY(-20px) scale(1.2) rotate(-3deg);
+    opacity: 0.7;
+  }
+  100% {
+    transform: translateY(-40px) scale(0.9) rotate(0deg);
+    opacity: 0;
+  }
+}
+
+@keyframes missionComplete {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 0 0 rgba(0, 255, 0, 0.7);
+  }
+  50% {
+    transform: scale(1.05);
+    box-shadow: 0 0 20px rgba(0, 255, 0, 0.7);
+  }
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 rgba(0, 255, 0, 0);
+  }
+}
+
+@keyframes achievementUnlock {
+  0% {
+    transform: scale(0.8) rotate(-10deg);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.1) rotate(5deg);
+    opacity: 0.9;
+  }
+  100% {
+    transform: scale(1) rotate(0deg);
+    opacity: 1;
+  }
+}
+
+/* Efeitos de Partículas */
+@keyframes sparkle {
+  0%, 100% {
+    opacity: 0;
+    transform: scale(0) rotate(0deg);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1) rotate(180deg);
+  }
+}
+
+@keyframes floatUp {
+  0% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-100px) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+/* Classes de Efeitos */
+.level-up-effect {
+  animation: levelUp 0.8s ease-in-out;
+}
+
+.xp-gain-effect {
+  animation: xpGain 1.5s ease-out forwards;
+  position: absolute;
+  color: var(--success-color);
+  font-weight: bold;
+  font-family: var(--font-retro-primary);
+  text-shadow: 0 0 10px currentColor;
+  pointer-events: none;
+  z-index: 1000;
+}
+
+.gold-gain-effect {
+  animation: goldGain 1.5s ease-out forwards;
+  position: absolute;
+  color: var(--accent-color);
+  font-weight: bold;
+  font-family: var(--font-retro-primary);
+  text-shadow: 0 0 10px currentColor;
+  pointer-events: none;
+  z-index: 1000;
+}
+
+.mission-complete-effect {
+  animation: missionComplete 0.6s ease-in-out;
+}
+
+.achievement-unlock-effect {
+  animation: achievementUnlock 0.8s ease-out;
+}
+
+/* Efeitos de Hover Gamificados */
+.gamified-hover {
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.gamified-hover:hover {
+  transform: translateY(-2px);
+  box-shadow: 
+    0 5px 15px rgba(138, 43, 226, 0.3),
+    0 0 20px rgba(138, 43, 226, 0.2);
+}
+
+.gamified-hover:hover::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: var(--gradient-primary);
+  border-radius: inherit;
+  z-index: -1;
+  opacity: 0.3;
+  animation: pulse-glow 2s infinite;
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    opacity: 0.3;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.6;
+    transform: scale(1.02);
+  }
+}
+
+/* Botões Gamificados */
+.gamified-button {
+  position: relative;
+  background: var(--gradient-primary);
+  border: 2px solid var(--primary-color);
+  color: var(--text-white);
+  font-family: var(--font-retro-primary);
+  padding: 12px 24px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  overflow: hidden;
+}
+
+.gamified-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.3),
+    transparent
+  );
+  transition: left 0.5s;
+}
+
+.gamified-button:hover::before {
+  left: 100%;
+}
+
+.gamified-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 
+    0 5px 15px rgba(138, 43, 226, 0.4),
+    0 0 25px rgba(138, 43, 226, 0.3);
+  border-color: var(--accent-color);
+}
+
+.gamified-button:active {
+  transform: translateY(0);
+  box-shadow: 
+    0 2px 8px rgba(138, 43, 226, 0.4),
+    inset 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* Efeitos de Progresso Avançados */
+.progress-particles {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.progress-particles::before,
+.progress-particles::after {
+  content: '✨';
+  position: absolute;
+  font-size: 12px;
+  animation: sparkle 2s infinite;
+}
+
+.progress-particles::before {
+  top: 20%;
+  left: 30%;
+  animation-delay: 0s;
+}
+
+.progress-particles::after {
+  top: 60%;
+  right: 25%;
+  animation-delay: 1s;
+}
+
+/* Efeitos de Streak */
+.streak-effect {
+  position: relative;
+}
+
+.streak-effect::after {
+  content: '🔥';
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  font-size: 16px;
+  animation: floatUp 3s infinite;
+}
+
+/* Efeitos de Raridade */
+.rarity-common {
+  border-color: #9e9e9e;
+  box-shadow: 0 0 10px rgba(158, 158, 158, 0.3);
+}
+
+.rarity-uncommon {
+  border-color: #4caf50;
+  box-shadow: 0 0 10px rgba(76, 175, 80, 0.3);
+}
+
+.rarity-rare {
+  border-color: #2196f3;
+  box-shadow: 0 0 10px rgba(33, 150, 243, 0.3);
+}
+
+.rarity-epic {
+  border-color: #9c27b0;
+  box-shadow: 0 0 10px rgba(156, 39, 176, 0.3);
+}
+
+.rarity-legendary {
+  border-color: #ff9800;
+  box-shadow: 0 0 15px rgba(255, 152, 0, 0.5);
+  animation: legendary-glow 2s infinite alternate;
+}
+
+@keyframes legendary-glow {
+  0% {
+    box-shadow: 0 0 15px rgba(255, 152, 0, 0.5);
+  }
+  100% {
+    box-shadow: 0 0 25px rgba(255, 152, 0, 0.8);
+  }
+}
+
+/* Efeitos de Loading Gamificados */
+.gamified-loading {
+  position: relative;
+  display: inline-block;
+}
+
+.gamified-loading::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 20px;
+  height: 20px;
+  margin: -10px 0 0 -10px;
+  border: 2px solid transparent;
+  border-top: 2px solid var(--primary-color);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Efeitos de Notificação */
+.notification-slide-in {
+  animation: slideInRight 0.5s ease-out;
+}
+
+.notification-slide-out {
+  animation: slideOutRight 0.3s ease-in;
+}
+
+@keyframes slideInRight {
+  0% {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideOutRight {
+  0% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+}

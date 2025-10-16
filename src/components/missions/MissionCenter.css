@@ -1,6 +1,6 @@
 .mission-center {
   background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
-  border-radius: 20px;
+  border-radius: var(--border-radius-2xl);
   border: 3px solid #4a90e2;
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3), 0 0 20px rgba(74, 144, 226, 0.2);
   overflow: hidden;
@@ -8,6 +8,8 @@
   flex-direction: column;
   height: fit-content;
   position: relative;
+  max-width: 900px;
+  margin: 0 auto;
 }
 
 .mission-center::before {
@@ -28,7 +30,7 @@
 
 .mission-header {
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  padding: 24px;
+  padding: 20px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -60,7 +62,7 @@
 }
 
 .mission-title {
-  font-size: 2.2rem;
+  font-size: 1.8rem;
   font-weight: 800;
   margin: 0 0 8px 0;
   text-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
@@ -69,6 +71,9 @@
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+  text-align: center;
+  font-family: var(--font-retro-primary);
+  letter-spacing: 2px;
 }
 
 .progress-summary {
@@ -93,9 +98,9 @@
   background: linear-gradient(135deg, #ff6b6b 0%, #ee5a24 100%);
   border: 3px solid #ffffff;
   color: #ffffff;
-  padding: 14px 24px;
-  border-radius: 25px;
-  font-size: 1rem;
+  padding: 12px 20px;
+  border-radius: var(--border-radius-full);
+  font-size: 0.9rem;
   font-weight: 700;
   cursor: pointer;
   display: flex;
@@ -108,6 +113,7 @@
   z-index: 1;
   position: relative;
   overflow: hidden;
+  font-family: var(--font-retro-secondary);
 }
 
 .add-mission-btn::before {

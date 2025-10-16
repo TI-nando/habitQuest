@@ -1,13 +1,14 @@
 .achievement-card {
   background: var(--card-bg, #ffffff);
-  border: 2px solid var(--rarity-border);
-  border-radius: 12px;
+  border: 2px solid var(--border-color, #e0e0e0);
+  border-radius: var(--border-radius-xl);
   padding: 1.5rem;
-  margin-bottom: 1rem;
+  margin-bottom: 1.5rem;
   transition: all 0.3s ease;
   cursor: pointer;
   position: relative;
   overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
 
 .achievement-card::before {
@@ -89,7 +90,7 @@
   background: var(--rarity-bg);
   color: var(--rarity-color);
   padding: 0.25rem 0.75rem;
-  border-radius: 20px;
+  border-radius: var(--border-radius-full);
   font-size: 0.75rem;
   font-weight: 600;
   text-transform: uppercase;
@@ -150,7 +151,7 @@
 .progress-bar {
   height: 8px;
   background: var(--progress-bg, #e0e0e0);
-  border-radius: 4px;
+  border-radius: var(--border-radius-sm);
   overflow: hidden;
   position: relative;
 }
@@ -158,7 +159,7 @@
 .progress-fill {
   height: 100%;
   background: linear-gradient(90deg, var(--rarity-color), var(--rarity-color));
-  border-radius: 4px;
+  border-radius: var(--border-radius-sm);
   transition: width 0.3s ease;
   position: relative;
 }
@@ -182,7 +183,7 @@
 .achievement-rewards {
   background: var(--rarity-bg);
   border: 1px solid var(--rarity-border);
-  border-radius: 8px;
+  border-radius: var(--border-radius-lg);
   padding: 0.75rem;
   margin-bottom: 1rem;
 }
@@ -209,7 +210,7 @@
   background: linear-gradient(135deg, #4CAF50, #45a049);
   color: white;
   padding: 0.25rem 0.75rem;
-  border-radius: 20px;
+  border-radius: var(--border-radius-full);
   font-size: 0.75rem;
   font-weight: 600;
   box-shadow: 0 2px 8px rgba(76, 175, 80, 0.3);

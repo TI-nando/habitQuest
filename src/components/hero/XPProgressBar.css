@@ -5,25 +5,31 @@
 
 .progress-track {
   width: 100%;
-  height: 20px;
+  height: 24px;
   background: var(--bg-primary);
-  border: 2px solid var(--border-color);
-  border-radius: 12px;
+  border: 2px solid var(--primary-color);
+  border-radius: 15px;
   overflow: hidden;
   position: relative;
-  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.3);
+  box-shadow: 
+    inset 0 2px 4px rgba(0, 0, 0, 0.5),
+    0 0 10px rgba(138, 43, 226, 0.3);
 }
 
 .progress-fill {
   height: 100%;
-  background: var(--gradient-xp);
-  border-radius: 10px;
+  background: var(--gradient-primary);
+  border-radius: 12px;
   position: relative;
-  transition: width 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: width 1.2s cubic-bezier(0.4, 0, 0.2, 1);
   min-width: 4px;
+  box-shadow: 
+    0 0 15px rgba(138, 43, 226, 0.6),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3);
 }
 
-.progress-glow {
+.progress-fill::before {
+  content: '';
   position: absolute;
   top: 0;
   left: 0;
@@ -32,10 +38,26 @@
   background: linear-gradient(
     90deg,
     transparent 0%,
+    rgba(255, 255, 255, 0.4) 50%,
+    transparent 100%
+  );
+  animation: shimmer 2.5s infinite;
+}
+
+.progress-fill::after {
+  content: '';
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  right: 2px;
+  height: 4px;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0.8) 0%,
     rgba(255, 255, 255, 0.3) 50%,
     transparent 100%
   );
-  animation: shimmer 2s infinite;
+  border-radius: 10px;
 }
 
 .progress-percentage {
@@ -45,9 +67,12 @@
   transform: translate(-50%, -50%);
   font-size: var(--font-size-xs);
   font-weight: 700;
-  color: var(--text-primary);
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8);
+  color: var(--text-white);
+  text-shadow: 
+    0 0 5px rgba(138, 43, 226, 0.8),
+    0 1px 2px rgba(0, 0, 0, 0.8);
   z-index: 2;
+  font-family: var(--font-retro-primary);
 }
 
 @keyframes shimmer {
@@ -59,16 +84,64 @@
   }
 }
 
-/* Efeito de pulso quando próximo do nível */
-.progress-fill[style*="9"] {
-  animation: pulse-xp 1.5s infinite;
+/* Efeito especial quando próximo do nível */
+.xp-progress-bar.near-level .progress-fill {
+  animation: pulse-xp 1.5s infinite, glow-intense 2s infinite alternate;
+}
+
+.xp-progress-bar.near-level .progress-track {
+  border-color: var(--accent-color);
+  box-shadow: 
+    inset 0 2px 4px rgba(0, 0, 0, 0.5),
+    0 0 20px rgba(233, 30, 99, 0.6);
 }
 
 @keyframes pulse-xp {
   0%, 100% {
-    box-shadow: 0 0 5px var(--success-color);
+    box-shadow: 
+      0 0 15px rgba(138, 43, 226, 0.6),
+      inset 0 1px 0 rgba(255, 255, 255, 0.3);
   }
   50% {
-    box-shadow: 0 0 20px var(--success-color), 0 0 30px var(--success-color);
+    box-shadow: 
+      0 0 25px rgba(138, 43, 226, 0.9),
+      0 0 35px rgba(233, 30, 99, 0.7),
+      inset 0 1px 0 rgba(255, 255, 255, 0.5);
+  }
+}
+
+@keyframes glow-intense {
+  0% {
+    filter: brightness(1);
+  }
+  100% {
+    filter: brightness(1.3);
+  }
+}
+
+/* Partículas de XP */
+.xp-progress-bar::before {
+  content: '';
+  position: absolute;
+  top: -5px;
+  left: -5px;
+  right: -5px;
+  bottom: -5px;
+  background: radial-gradient(circle at 20% 50%, rgba(138, 43, 226, 0.1) 0%, transparent 50%),
+              radial-gradient(circle at 80% 30%, rgba(233, 30, 99, 0.1) 0%, transparent 50%),
+              radial-gradient(circle at 60% 80%, rgba(156, 39, 176, 0.1) 0%, transparent 50%);
+  border-radius: 20px;
+  animation: particle-float 4s infinite ease-in-out;
+  pointer-events: none;
+}
+
+@keyframes particle-float {
+  0%, 100% {
+    opacity: 0.3;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.7;
+    transform: scale(1.05);
   }
 }

@@ -10,19 +10,19 @@
   --font-retro-accent: 'Audiowide', cursive;
   --font-fallback: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   
-  /* Cores Primárias - Tema Retro Neon */
-  --primary-color: #00ffff;
-  --primary-dark: #00cccc;
-  --primary-light: #66ffff;
-  --secondary-color: #ff00ff;
-  --accent-color: #ffff00;
+  /* Cores Primárias - Tema Retro com tons mais suaves */
+  --primary-color: #8a2be2;
+  --primary-dark: #6a1b9a;
+  --primary-light: #ba68c8;
+  --secondary-color: #9c27b0;
+  --accent-color: #e91e63;
   
-  /* Gradientes Retro Neon */
-  --gradient-primary: linear-gradient(135deg, #00ffff 0%, #ff00ff 100%);
-  --gradient-secondary: linear-gradient(135deg, #ff00ff 0%, #ffff00 100%);
-  --gradient-gold: linear-gradient(135deg, #ffff00 0%, #ff8800 100%);
-  --gradient-success: linear-gradient(135deg, #00ff00 0%, #00cc00 100%);
-  --gradient-danger: linear-gradient(135deg, #ff0066 0%, #cc0044 100%);
+  /* Gradientes Retro com Preto-Roxo */
+  --gradient-primary: linear-gradient(135deg, #2e1065 0%, #8a2be2 100%);
+  --gradient-secondary: linear-gradient(135deg, #1a1a2e 0%, #9c27b0 100%);
+  --gradient-gold: linear-gradient(135deg, #ff8f00 0%, #ffb300 100%);
+  --gradient-success: linear-gradient(135deg, #2e7d32 0%, #4caf50 100%);
+  --gradient-danger: linear-gradient(135deg, #c62828 0%, #f44336 100%);
   --gradient-retro-bg: linear-gradient(135deg, #0a0a0a 0%, #1a0a1a 50%, #0a1a1a 100%);
   
   /* Cores de Background - Tema Escuro Retro */
@@ -33,18 +33,18 @@
   --bg-overlay: rgba(0, 0, 0, 0.8);
   --bg-modal: rgba(26, 26, 46, 0.95);
   
-  /* Cores de Texto - Neon Retro */
-  --text-primary: #00ffff;
-  --text-secondary: #ff00ff;
-  --text-muted: #888888;
-  --text-disabled: #444444;
+  /* Cores de Texto - Branco para melhor visualização */
+  --text-primary: #ffffff;
+  --text-secondary: #ffffff;
+  --text-muted: #cccccc;
+  --text-disabled: #888888;
   --text-white: #ffffff;
-  --text-on-primary: #000000;
-  --text-on-secondary: #000000;
-  --text-on-dark: #00ffff;
-  --text-neon-green: #00ff00;
-  --text-neon-yellow: #ffff00;
-  --text-neon-pink: #ff00ff;
+  --text-on-primary: #ffffff;
+  --text-on-secondary: #ffffff;
+  --text-on-dark: #ffffff;
+  --text-neon-green: #ffffff;
+  --text-neon-yellow: #ffffff;
+  --text-neon-pink: #ffffff;
   
   /* Cores de Estado - Neon */
   --success-color: #00ff00;
