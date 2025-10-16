@@ -1,0 +1,194 @@
+/* Tema Retro Global - HabitQuest */
+
+/* Aplicação global das fontes retro */
+* {
+  font-family: var(--font-retro-secondary) !important;
+}
+
+/* Títulos principais com fonte pixel art */
+h1, h2, h3, .title, .hero-title, .page-title {
+  font-family: var(--font-retro-primary) !important;
+  text-shadow: 0 0 10px currentColor;
+  letter-spacing: 2px;
+}
+
+/* Subtítulos e textos de destaque */
+h4, h5, h6, .subtitle, .accent-text {
+  font-family: var(--font-retro-accent) !important;
+  text-shadow: 0 0 5px currentColor;
+}
+
+/* Botões com estilo retro */
+button, .btn, .button {
+  font-family: var(--font-retro-primary) !important;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  text-shadow: 0 0 5px currentColor;
+}
+
+/* Labels e textos pequenos */
+label, .label, .small-text {
+  font-family: var(--font-retro-secondary) !important;
+  font-size: var(--font-sm);
+}
+
+/* Inputs com fonte retro */
+input, textarea, select {
+  font-family: var(--font-retro-secondary) !important;
+}
+
+/* Navegação */
+nav, .nav, .navigation {
+  font-family: var(--font-retro-accent) !important;
+}
+
+/* Cards e containers */
+.card, .container, .box {
+  background: var(--bg-card);
+  border: 2px solid var(--border-neon);
+  box-shadow: var(--shadow-glow);
+}
+
+/* Efeitos neon para textos importantes */
+.neon-text {
+  color: var(--text-primary);
+  text-shadow: 
+    0 0 5px currentColor,
+    0 0 10px currentColor,
+    0 0 15px currentColor;
+}
+
+.neon-pink {
+  color: var(--text-neon-pink);
+  text-shadow: 
+    0 0 5px var(--text-neon-pink),
+    0 0 10px var(--text-neon-pink),
+    0 0 15px var(--text-neon-pink);
+}
+
+.neon-green {
+  color: var(--text-neon-green);
+  text-shadow: 
+    0 0 5px var(--text-neon-green),
+    0 0 10px var(--text-neon-green),
+    0 0 15px var(--text-neon-green);
+}
+
+.neon-yellow {
+  color: var(--text-neon-yellow);
+  text-shadow: 
+    0 0 5px var(--text-neon-yellow),
+    0 0 10px var(--text-neon-yellow),
+    0 0 15px var(--text-neon-yellow);
+}
+
+/* Background retro para o body */
+body {
+  background: var(--gradient-retro-bg);
+  color: var(--text-primary);
+  font-family: var(--font-retro-secondary) !important;
+}
+
+/* Scrollbar retro */
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--gradient-primary);
+  border-radius: var(--radius-sm);
+  box-shadow: var(--shadow-glow);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--gradient-secondary);
+}
+
+/* Animações retro */
+@keyframes retro-pulse {
+  0%, 100% {
+    text-shadow: 
+      0 0 5px currentColor,
+      0 0 10px currentColor,
+      0 0 15px currentColor;
+  }
+  50% {
+    text-shadow: 
+      0 0 2px currentColor,
+      0 0 5px currentColor,
+      0 0 8px currentColor;
+  }
+}
+
+@keyframes retro-glow {
+  0%, 100% {
+    box-shadow: 
+      0 0 5px var(--primary-color),
+      0 0 10px var(--primary-color),
+      0 0 15px var(--primary-color);
+  }
+  50% {
+    box-shadow: 
+      0 0 10px var(--secondary-color),
+      0 0 20px var(--secondary-color),
+      0 0 30px var(--secondary-color);
+  }
+}
+
+.retro-pulse {
+  animation: retro-pulse 2s ease-in-out infinite;
+}
+
+.retro-glow {
+  animation: retro-glow 3s ease-in-out infinite;
+}
+
+/* Efeitos hover retro */
+.retro-hover:hover {
+  transform: scale(1.05);
+  text-shadow: 
+    0 0 10px currentColor,
+    0 0 20px currentColor,
+    0 0 30px currentColor;
+  transition: all var(--transition-normal);
+}
+
+/* Grid pattern background para elementos especiais */
+.retro-grid {
+  background-image: 
+    linear-gradient(rgba(0, 255, 255, 0.1) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 255, 255, 0.1) 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+
+/* Bordas neon animadas */
+.neon-border {
+  border: 2px solid var(--primary-color);
+  box-shadow: 
+    0 0 5px var(--primary-color),
+    inset 0 0 5px var(--primary-color);
+  animation: retro-glow 2s ease-in-out infinite;
+}
+
+/* Texto com efeito de digitação */
+.typing-effect {
+  overflow: hidden;
+  border-right: 2px solid var(--primary-color);
+  white-space: nowrap;
+  animation: typing 3s steps(40, end), blink-caret 0.75s step-end infinite;
+}
+
+@keyframes typing {
+  from { width: 0; }
+  to { width: 100%; }
+}
+
+@keyframes blink-caret {
+  from, to { border-color: transparent; }
+  50% { border-color: var(--primary-color); }
+}

@@ -1,0 +1,121 @@
+.hero-stats {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+.stats-title {
+  font-size: var(--font-size-lg);
+  font-weight: 600;
+  color: var(--text-primary);
+  margin: 0;
+  text-align: center;
+  padding-bottom: var(--spacing-sm);
+  border-bottom: 2px solid var(--border-color);
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--spacing-sm);
+}
+
+.stat-item {
+  background: var(--bg-tertiary);
+  border: 2px solid var(--border-color);
+  border-radius: var(--border-radius);
+  padding: var(--spacing-md);
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  transition: all var(--transition-normal);
+  cursor: pointer;
+}
+
+.stat-item:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-medium);
+}
+
+.stat-item.success {
+  border-color: var(--success-color);
+}
+
+.stat-item.success:hover {
+  box-shadow: 0 4px 12px rgba(126, 211, 33, 0.3);
+}
+
+.stat-item.warning {
+  border-color: var(--warning-color);
+}
+
+.stat-item.warning:hover {
+  box-shadow: 0 4px 12px rgba(248, 231, 28, 0.3);
+}
+
+.stat-item.primary {
+  border-color: var(--primary-color);
+}
+
+.stat-item.primary:hover {
+  box-shadow: 0 4px 12px rgba(74, 144, 226, 0.3);
+}
+
+.stat-item.secondary {
+  border-color: var(--secondary-color);
+}
+
+.stat-item.secondary:hover {
+  box-shadow: 0 4px 12px rgba(245, 166, 35, 0.3);
+}
+
+.stat-icon {
+  font-size: var(--font-size-xl);
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+}
+
+.stat-content {
+  flex: 1;
+  min-width: 0;
+}
+
+.stat-value {
+  font-size: var(--font-size-lg);
+  font-weight: 700;
+  color: var(--text-primary);
+  line-height: 1.2;
+}
+
+.stat-label {
+  font-size: var(--font-size-xs);
+  color: var(--text-muted);
+  text-transform: uppercase;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  margin-top: var(--spacing-xs);
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .stats-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .stat-item {
+    padding: var(--spacing-sm);
+  }
+  
+  .stat-icon {
+    font-size: var(--font-size-lg);
+  }
+  
+  .stat-value {
+    font-size: var(--font-size-base);
+  }
+}
+
+@media (max-width: 480px) {
+  .stats-grid {
+    gap: var(--spacing-xs);
+  }
+}

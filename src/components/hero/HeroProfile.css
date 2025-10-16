@@ -1,0 +1,199 @@
+/* Hero Profile - Tema Retro */
+.hero-profile {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-lg);
+  font-family: var(--font-retro-secondary) !important;
+}
+
+.hero-avatar-section {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+}
+
+.hero-avatar {
+  position: relative;
+  width: 80px;
+  height: 80px;
+  background: var(--gradient-primary);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 3px solid var(--border-neon);
+  box-shadow: var(--shadow-glow);
+}
+
+.avatar-emoji {
+  font-size: 2.5rem;
+  filter: drop-shadow(0 0 10px currentColor);
+}
+
+.level-badge {
+  position: absolute;
+  bottom: -5px;
+  right: -5px;
+  background: var(--gradient-gold);
+  border: 2px solid var(--border-neon);
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--shadow-glow);
+}
+
+.level-number {
+  font-size: var(--font-size-sm);
+  font-weight: 700;
+  color: var(--text-on-primary);
+  font-family: var(--font-retro-accent) !important;
+  text-shadow: 0 0 5px currentColor;
+}
+
+.hero-info {
+  flex: 1;
+}
+
+.hero-name {
+  font-size: var(--font-size-xl);
+  font-weight: 700;
+  margin: 0 0 var(--spacing-xs) 0;
+  color: var(--primary-color);
+  font-family: var(--font-retro-primary) !important;
+  text-shadow: 0 0 15px currentColor;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.hero-title {
+  color: var(--text-secondary);
+  font-size: var(--font-size-sm);
+  font-weight: 500;
+  font-family: var(--font-retro-secondary) !important;
+  text-shadow: 0 0 5px currentColor;
+}
+
+.hero-resources {
+  display: flex;
+  gap: var(--spacing-md);
+}
+
+.resource-item {
+  background: var(--bg-tertiary);
+  border: 2px solid var(--border-color);
+  border-radius: var(--border-radius);
+  padding: var(--spacing-md);
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  flex: 1;
+  transition: all var(--transition-normal);
+}
+
+.resource-item:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-glow);
+  border-color: var(--border-neon);
+}
+
+.resource-item.gold {
+  border-color: var(--secondary-color);
+  box-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
+}
+
+.resource-icon {
+  font-size: var(--font-size-lg);
+  filter: drop-shadow(0 0 5px currentColor);
+}
+
+.resource-info {
+  flex: 1;
+}
+
+.resource-label {
+  font-size: var(--font-size-xs);
+  color: var(--text-muted);
+  text-transform: uppercase;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  font-family: var(--font-retro-secondary) !important;
+}
+
+.resource-value {
+  font-size: var(--font-size-lg);
+  font-weight: 700;
+  color: var(--secondary-color);
+  font-family: var(--font-retro-accent) !important;
+  text-shadow: 0 0 10px currentColor;
+}
+
+.xp-section {
+  background: var(--bg-tertiary);
+  border: 2px solid var(--success-color);
+  border-radius: var(--border-radius);
+  padding: var(--spacing-md);
+  box-shadow: 0 0 15px rgba(0, 255, 0, 0.2);
+}
+
+.xp-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--spacing-sm);
+}
+
+.xp-label {
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  color: var(--success-color);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-family: var(--font-retro-primary) !important;
+  text-shadow: 0 0 10px currentColor;
+}
+
+.xp-values {
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  color: var(--text-primary);
+  font-family: var(--font-retro-accent) !important;
+  text-shadow: 0 0 5px currentColor;
+}
+
+.xp-remaining {
+  text-align: center;
+  font-size: var(--font-size-xs);
+  color: var(--text-muted);
+  margin-top: var(--spacing-sm);
+  font-family: var(--font-retro-secondary) !important;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .hero-avatar-section {
+    flex-direction: column;
+    text-align: center;
+    gap: var(--spacing-sm);
+  }
+  
+  .hero-avatar {
+    width: 70px;
+    height: 70px;
+  }
+  
+  .avatar-emoji {
+    font-size: 2rem;
+  }
+  
+  .level-badge {
+    width: 28px;
+    height: 28px;
+  }
+  
+  .resource-item {
+    padding: var(--spacing-sm);
+  }
+}
