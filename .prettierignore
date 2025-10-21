@@ -1,0 +1,11 @@
+node_modules
+dist
+build
+.git
+*.md
+package-lock.json
+*.svg
+*.png
+*.jpg
+*.jpeg
+*.gif
