@@ -5,6 +5,7 @@ import AchievementCenter from './components/achievements/AchievementCenter'
 import StatsDashboard from './components/stats/StatsDashboard'
 import UserProfile from './components/user/UserProfile'
 import NotificationSystem from './components/common/NotificationSystem'
+import BackupManager from './components/common/BackupManager'
 import ToastContainer from './components/ui/ToastContainer'
 import AuthPage from './components/auth/AuthPage'
 import WelcomeScreen from './components/auth/WelcomeScreen'
@@ -16,6 +17,8 @@ import useAchievements from './hooks/useAchievements'
 import useToast from './hooks/useToast'
 import { updateStreak, STREAK_TYPES } from './utils/streaks'
 import './App.css'
+import './styles/animations.css'
+import './styles/futuristic-theme.css'
 
 // Componente principal da aplicação
 const AppContent = () => {
@@ -33,9 +36,9 @@ const AppContent = () => {
     return (
       <div className="loading-screen">
         <div className="loading-content">
-          <h2>🎮 HabitQuest</h2>
+          <h2>💻 HabitDev</h2>
           <div className="loading-spinner"></div>
-          <p>Carregando sua aventura...</p>
+          <p>Carregando sua workspace...</p>
         </div>
       </div>
     );
@@ -59,6 +62,7 @@ const AppContent = () => {
 // Componente do dashboard do jogo (código original do App)
 const GameDashboard = () => {
   const [activeTab, setActiveTab] = useState('dashboard')
+  const [showBackupManager, setShowBackupManager] = useState(false)
   
   const { 
     heroData, 
@@ -85,6 +89,7 @@ const GameDashboard = () => {
     showXPGain, 
     showGoldGain, 
     showLevelUp, 
+    showTitleChange,
     showMissionComplete,
     showAchievement,
     removeNotification, 
@@ -152,6 +157,12 @@ const GameDashboard = () => {
       if (xpGained.leveledUp) {
         showLevelUpToast(xpGained.newLevel)
         showLevelUp(xpGained.newLevel, xpGained.levelBonuses)
+        
+        // Verificar se houve mudança de título
+        if (xpGained.titleChange && xpGained.titleChange.changed) {
+          showTitleChange(xpGained.titleChange.newTitle.title, 
+            `Parabéns! Você evoluiu para ${xpGained.titleChange.newTitle.title}!`)
+        }
       }
       
     } catch (error) {
@@ -215,7 +226,12 @@ const GameDashboard = () => {
     <div className="app">
       <nav className="app-nav">
         <div className="nav-container">
-          <h1 className="app-title">🏰 HabitQuest</h1>
+          <h1 
+            className="app-title clickable-title" 
+            onClick={() => setActiveTab('dashboard')}
+          >
+            💻 HabitDev
+          </h1>
           <div className="nav-tabs">
             <button
               className={`nav-tab ${activeTab === 'dashboard' ? 'active' : ''}`}
@@ -247,6 +263,13 @@ const GameDashboard = () => {
             >
               👤 Perfil
             </button>
+            <button
+              className="nav-tab backup-btn"
+              onClick={() => setShowBackupManager(true)}
+              title="Gerenciar Backups"
+            >
+              💾 Backup
+            </button>
           </div>
         </div>
       </nav>
@@ -263,6 +286,11 @@ const GameDashboard = () => {
       <ToastContainer 
         toasts={toasts}
         onRemoveToast={removeToast}
+      />
+
+      <BackupManager 
+        isOpen={showBackupManager}
+        onClose={() => setShowBackupManager(false)}
       />
     </div>
   )
