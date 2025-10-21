@@ -65,9 +65,9 @@ const NotificationSystem = ({ notifications, onRemoveNotification }) => {
       {visibleNotifications.map((notification) => (
         <div
           key={notification.id}
-          className={`notification ${getNotificationClass(notification.type)} ${notification.isNew ? 'entering' : ''}`}
+          className={`notification ${getNotificationClass(notification.type)} ${notification.isNew ? 'animate-fadeInRight' : ''}`}
         >
-          <div className="notification-icon">
+          <div className={`notification-icon ${notification.type === 'xp' ? 'animate-pulse' : notification.type === 'gold' ? 'animate-coinFlip' : notification.type === 'level' ? 'animate-sparkle' : notification.type === 'achievement' ? 'animate-bounceIn' : 'animate-scaleIn'}`}>
             {getNotificationIcon(notification.type)}
           </div>
           
@@ -83,15 +83,15 @@ const NotificationSystem = ({ notifications, onRemoveNotification }) => {
             {notification.rewards && (
               <div className="notification-rewards">
                 {notification.rewards.xp && (
-                  <span className="reward-item">
-                    <span className="reward-icon">⭐</span>
+                  <span className="reward-item animate-scaleIn">
+                    <span className="reward-icon animate-pulse">⭐</span>
                     +{notification.rewards.xp} XP
                   </span>
                 )}
                 {notification.rewards.gold && (
-                  <span className="reward-item">
-                    <span className="reward-icon">🪙</span>
-                    +{notification.rewards.gold} Ouro
+                  <span className="reward-item animate-scaleIn">
+                    <span className="reward-icon animate-coinFlip">🪙</span>
+                    +{notification.rewards.gold} Pontos
                   </span>
                 )}
               </div>
@@ -99,7 +99,7 @@ const NotificationSystem = ({ notifications, onRemoveNotification }) => {
           </div>
 
           <button
-            className="notification-close"
+            className="notification-close hover-glow"
             onClick={() => removeNotification(notification.id)}
           >
             ✕

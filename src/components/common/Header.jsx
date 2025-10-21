@@ -7,9 +7,9 @@ const Header = () => {
       <div className="container">
         <div className="header-content">
           <div className="logo">
-            <div className="logo-icon">⚔️</div>
-            <h1 className="logo-text">HabitQuest RPG</h1>
-          </div>
+              <div className="logo-icon">💻</div>
+              <h1 className="logo-text">HabitDev</h1>
+            </div>
           <nav className="navigation">
             <button className="nav-button active">Dashboard</button>
             <button className="nav-button">Missões</button>

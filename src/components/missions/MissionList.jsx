@@ -8,8 +8,8 @@ const MissionList = ({ missions, onCompleteMission, onDeleteMission, onEditMissi
       <div className="mission-list empty">
         <div className="empty-state">
           <div className="empty-icon">📋</div>
-          <h3>Nenhuma missão encontrada</h3>
-          <p>Adicione uma nova missão para começar!</p>
+          <h3>Nenhuma tarefa encontrada</h3>
+          <p>Adicione uma nova tarefa para começar!</p>
         </div>
       </div>
     )

@@ -15,22 +15,22 @@ const WelcomeScreen = ({ onComplete }) => {
   ]
 
   const titleOptions = [
-    'Iniciante', 'Aventureiro', 'Explorador', 'Guerreiro',
-    'Mago', 'Arqueiro', 'Cavaleiro', 'Druida'
+    'Iniciante', 'Junior', 'Pleno', 'Senior',
+    'Mestre', 'Arquiteto', 'Tech Lead', 'CTO'
   ]
 
   const steps = [
     {
-      title: '🏰 Bem-vindo ao HabitQuest!',
-      subtitle: 'Transforme seus hábitos em uma aventura épica',
+      title: '💻 Bem-vindo ao HabitDev!',
+      subtitle: 'Transforme seus hábitos de desenvolvimento em uma jornada produtiva',
       content: (
         <div className="welcome-intro">
           <div className="feature-list">
             <div className="feature-item">
               <span className="feature-icon">⚔️</span>
               <div>
-                <h4>Missões Épicas</h4>
-                <p>Transforme suas tarefas em missões heroicas</p>
+                <h4>Tarefas de Desenvolvimento</h4>
+                <p>Transforme suas atividades diárias em tarefas gamificadas. Desde estudar uma nova tecnologia até fazer code review, cada atividade se torna uma oportunidade de crescimento.</p>
               </div>
             </div>
             <div className="feature-item">
@@ -44,7 +44,7 @@ const WelcomeScreen = ({ onComplete }) => {
               <span className="feature-icon">📈</span>
               <div>
                 <h4>Progressão</h4>
-                <p>Ganhe XP e suba de nível como um verdadeiro herói</p>
+                <p>Ganhe XP e suba de nível como um verdadeiro desenvolvedor</p>
               </div>
             </div>
           </div>
@@ -52,18 +52,18 @@ const WelcomeScreen = ({ onComplete }) => {
       )
     },
     {
-      title: '🎭 Crie seu Herói',
+      title: '🎭 Crie seu Perfil',
       subtitle: 'Como você gostaria de ser conhecido?',
       content: (
         <div className="hero-creation">
           <div className="name-input-section">
-            <label htmlFor="heroName">Nome do seu Herói:</label>
+            <label htmlFor="heroName">Nome do seu Perfil:</label>
             <input
               id="heroName"
               type="text"
               value={heroName}
               onChange={(e) => setHeroName(e.target.value)}
-              placeholder="Digite o nome do seu herói..."
+              placeholder="Digite seu nome de desenvolvedor..."
               maxLength={20}
             />
           </div>
@@ -109,22 +109,22 @@ const WelcomeScreen = ({ onComplete }) => {
       )
     },
     {
-      title: '🚀 Pronto para a Aventura!',
-      subtitle: 'Sua jornada heroica está prestes a começar',
+      title: '🚀 Pronto para Codar!',
+      subtitle: 'Sua jornada de desenvolvimento está prestes a começar',
       content: (
         <div className="final-step">
           <div className="hero-preview">
             <div className="hero-avatar">{selectedAvatar}</div>
-            <h3>{heroName || 'Herói'}</h3>
+            <h3>{heroName || 'Desenvolvedor'}</h3>
             <p className="hero-title">{selectedTitle}</p>
           </div>
           <div className="tips">
             <h4>💡 Dicas para começar:</h4>
             <ul>
-              <li>Crie suas primeiras missões diárias</li>
-              <li>Complete tarefas para ganhar XP e ouro</li>
+              <li>Crie suas primeiras tarefas de desenvolvimento</li>
+              <li>Complete atividades para ganhar XP e pontos</li>
               <li>Desbloqueie conquistas conforme progride</li>
-              <li>Acompanhe suas estatísticas na aba Stats</li>
+              <li>Acompanhe sua produtividade na aba Stats</li>
             </ul>
           </div>
         </div>
@@ -150,7 +150,7 @@ const WelcomeScreen = ({ onComplete }) => {
     try {
       // Atualizar perfil do usuário com as informações coletadas
       await updateProfile({
-        heroName: heroName || 'Herói',
+        heroName: heroName || 'Desenvolvedor',
         avatar: selectedAvatar,
         title: selectedTitle,
         onboardingCompleted: true
@@ -209,7 +209,7 @@ const WelcomeScreen = ({ onComplete }) => {
             onClick={handleNext}
             disabled={!canProceed()}
           >
-            {currentStep === steps.length - 1 ? 'Começar Aventura! 🚀' : 'Próximo →'}
+            {currentStep === steps.length - 1 ? 'Começar Desenvolvimento! 🚀' : 'Próximo →'}
           </button>
         </div>
       </div>

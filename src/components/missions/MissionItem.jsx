@@ -43,10 +43,12 @@ const MissionItem = ({ mission, onComplete, onDelete, onEdit }) => {
   const createFloatingText = (text, className) => {
     const element = document.createElement('div')
     element.textContent = text
-    element.className = className
+    element.className = `${className} animate-fadeInUp`
     element.style.position = 'absolute'
     element.style.zIndex = '1000'
     element.style.pointerEvents = 'none'
+    element.style.fontWeight = 'bold'
+    element.style.fontSize = '1.2rem'
     
     if (itemRef.current) {
       const rect = itemRef.current.getBoundingClientRect()
@@ -54,8 +56,15 @@ const MissionItem = ({ mission, onComplete, onDelete, onEdit }) => {
       element.style.top = `${rect.top}px`
       document.body.appendChild(element)
       
+      // Adicionar animação de saída
       setTimeout(() => {
-        document.body.removeChild(element)
+        element.classList.add('animate-fadeOut')
+      }, 1000)
+      
+      setTimeout(() => {
+        if (document.body.contains(element)) {
+          document.body.removeChild(element)
+        }
       }, 1500)
     }
   }
@@ -67,7 +76,7 @@ const MissionItem = ({ mission, onComplete, onDelete, onEdit }) => {
     
     // Adicionar efeito visual de conclusão
     if (itemRef.current) {
-      itemRef.current.classList.add('mission-complete-effect')
+      itemRef.current.classList.add('mission-complete-effect', 'animate-pulse')
     }
     
     try {
@@ -78,12 +87,12 @@ const MissionItem = ({ mission, onComplete, onDelete, onEdit }) => {
       const goldGain = mission.rewards?.gold || mission.goldReward || 0
       
       setTimeout(() => {
-        createFloatingText(`+${xpGain} XP`, 'xp-gain-effect')
+        createFloatingText(`+${xpGain} XP`, 'xp-number animate-scaleIn')
       }, 200)
       
       if (goldGain > 0) {
         setTimeout(() => {
-          createFloatingText(`+${goldGain} 🪙`, 'gold-gain-effect')
+          createFloatingText(`+${goldGain} 🪙`, 'gold-number animate-coinFlip')
         }, 400)
       }
       
@@ -91,7 +100,7 @@ const MissionItem = ({ mission, onComplete, onDelete, onEdit }) => {
       setTimeout(() => {
         setIsCompleting(false)
         if (itemRef.current) {
-          itemRef.current.classList.remove('mission-complete-effect')
+          itemRef.current.classList.remove('mission-complete-effect', 'animate-pulse')
         }
       }, 600)
     }
@@ -100,7 +109,7 @@ const MissionItem = ({ mission, onComplete, onDelete, onEdit }) => {
   return (
     <div 
       ref={itemRef}
-      className={`todo-item gamified-card ${mission.isCompleted ? 'completed' : ''} ${isCompleting ? 'completing' : ''}`}
+      className={`todo-item gamified-card animate-fadeInUp ${mission.isCompleted ? 'completed' : ''} ${isCompleting ? 'completing animate-shake' : ''}`}
     >
       {/* Particles effect */}
       <div className="particles-container">
@@ -112,7 +121,7 @@ const MissionItem = ({ mission, onComplete, onDelete, onEdit }) => {
       {/* Checkbox */}
       <div className="todo-checkbox-container">
         <button
-          className={`todo-checkbox gamified-button ${mission.isCompleted ? 'checked' : ''}`}
+          className={`todo-checkbox gamified-button hover-glow ${mission.isCompleted ? 'checked animate-bounceIn' : ''}`}
           onClick={handleComplete}
           disabled={isCompleting || mission.isCompleted}
         >
@@ -152,7 +161,7 @@ const MissionItem = ({ mission, onComplete, onDelete, onEdit }) => {
             </span>
             {(mission.rewards?.gold || mission.goldReward) && (
               <span className="reward-badge gold">
-                🪙 {mission.rewards?.gold || mission.goldReward} Ouro
+                🪙 {mission.rewards?.gold || mission.goldReward} Pontos
               </span>
             )}
           </div>
@@ -170,16 +179,16 @@ const MissionItem = ({ mission, onComplete, onDelete, onEdit }) => {
         {!mission.isCompleted && (
           <>
             <button 
-              className="action-btn edit-btn"
+              className="action-btn edit-btn hover-glow"
               onClick={() => onEdit && onEdit(mission)}
-              title="Editar missão"
+              title="Editar tarefa"
             >
               ✏️
             </button>
             <button 
-              className="action-btn delete-btn"
+              className="action-btn delete-btn hover-glow"
               onClick={() => onDelete && onDelete(mission.id)}
-              title="Deletar missão"
+              title="Deletar tarefa"
             >
               🗑️
             </button>

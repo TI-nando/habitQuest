@@ -15,7 +15,7 @@ const HeroDashboard = ({
   if (!heroData) {
     return (
       <div className="hero-dashboard loading">
-        <div className="loading-message">Carregando dados do herói...</div>
+        <div className="loading-message">Carregando dados do desenvolvedor...</div>
       </div>
     )
   }
@@ -24,8 +24,8 @@ const HeroDashboard = ({
     <div className="hero-dashboard">
       <div className="dashboard-header">
         <h2 className="dashboard-title">
-          <span className="title-icon">🏰</span>
-          Dashboard do Herói
+          <span className="title-icon">💻</span>
+          Dashboard do Desenvolvedor
         </h2>
       </div>
 

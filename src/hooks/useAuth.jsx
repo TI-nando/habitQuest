@@ -1,12 +1,12 @@
-import React, { useState, useEffect, createContext, useContext } from 'react';
-import { save, load } from '../utils/storage';
+import React, { useState, useEffect, createContext, useContext } from 'react'
+import { storage } from '../utils/storage'
 
 // Context para autenticação
-const AuthContext = createContext();
+const AuthContext = createContext()
 
 // Hook para usar o contexto de autenticação
 export const useAuth = () => {
-  const context = useContext(AuthContext);
+  const context = useContext(AuthContext)
   if (!context) {
     throw new Error('useAuth deve ser usado dentro de um AuthProvider');
   }
@@ -22,7 +22,7 @@ export const AuthProvider = ({ children }) => {
   useEffect(() => {
     const loadUser = () => {
       try {
-        const savedUser = load('currentUser');
+        const savedUser = storage.load('currentUser');
         if (savedUser) {
           setUser(savedUser);
         }
@@ -59,7 +59,7 @@ export const AuthProvider = ({ children }) => {
       }
 
       // Verificar se usuário já existe
-      const existingUsers = load('users') || [];
+      const existingUsers = storage.load('users') || [];
       const userExists = existingUsers.find(u => 
         u.username === username || u.email === email
       );
@@ -78,7 +78,7 @@ export const AuthProvider = ({ children }) => {
         xp: 0,
         gold: 0,
         avatar: '🎮',
-        title: 'Aventureiro Iniciante',
+        title: 'Desenvolvedor Iniciante',
         stats: {
           totalMissions: 0,
           completedMissions: 0,
@@ -89,10 +89,10 @@ export const AuthProvider = ({ children }) => {
 
       // Salvar usuário na lista de usuários
       const updatedUsers = [...existingUsers, newUser];
-      save('users', updatedUsers);
+      storage.save('users', updatedUsers);
 
       // Definir como usuário atual
-      save('currentUser', newUser);
+      storage.save('currentUser', newUser);
       setUser(newUser);
 
       return { success: true, user: newUser };
@@ -111,7 +111,7 @@ export const AuthProvider = ({ children }) => {
       }
 
       // Buscar usuário
-      const users = load('users') || [];
+      const users = storage.load('users') || [];
       const user = users.find(u => 
         (u.username === username || u.email === username)
       );
@@ -125,7 +125,7 @@ export const AuthProvider = ({ children }) => {
       // se o usuário existe (em produção, NUNCA faça isso!)
       
       // Definir como usuário atual
-      save('currentUser', user);
+      storage.save('currentUser', user);
       setUser(user);
 
       return { success: true, user };
@@ -136,7 +136,7 @@ export const AuthProvider = ({ children }) => {
 
   // Função para fazer logout
   const logout = () => {
-    save('currentUser', null);
+    storage.save('currentUser', null);
     setUser(null);
   };
 
@@ -146,15 +146,15 @@ export const AuthProvider = ({ children }) => {
       const updatedUser = { ...user, ...updates };
       
       // Atualizar na lista de usuários
-      const users = load('users') || [];
+      const users = storage.load('users') || [];
       const userIndex = users.findIndex(u => u.id === user.id);
       if (userIndex !== -1) {
         users[userIndex] = updatedUser;
-        save('users', users);
+        storage.save('users', users);
       }
 
       // Atualizar usuário atual
-      save('currentUser', updatedUser);
+      storage.save('currentUser', updatedUser);
       setUser(updatedUser);
 
       return { success: true, user: updatedUser };

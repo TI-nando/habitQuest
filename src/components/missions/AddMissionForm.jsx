@@ -32,9 +32,9 @@ const AddMissionForm = ({ onAddMission, onCancel, defaultType = 'daily' }) => {
     // Ajustar recompensas baseado na dificuldade (valores fixos mais desafiadores)
     if (name === 'difficulty') {
       const rewards = {
-        easy: { xp: 10, gold: 4 },    // Fácil: 10 XP, 4 ouro
-        medium: { xp: 25, gold: 10 }, // Médio: 25 XP, 10 ouro  
-        hard: { xp: 50, gold: 20 }    // Difícil: 50 XP, 20 ouro
+        easy: { xp: 10, gold: 4 },    // Fácil: 10 XP, 4 pontos
+        medium: { xp: 25, gold: 10 }, // Médio: 25 XP, 10 pontos  
+        hard: { xp: 50, gold: 20 }    // Difícil: 50 XP, 20 pontos
       }
       
       setFormData(prev => ({
@@ -61,7 +61,7 @@ const AddMissionForm = ({ onAddMission, onCancel, defaultType = 'daily' }) => {
     }
 
     if (formData.goldReward < 0) {
-      newErrors.goldReward = 'Recompensa de ouro não pode ser negativa'
+      newErrors.goldReward = 'Recompensa de pontos não pode ser negativa'
     }
 
     setErrors(newErrors)
@@ -109,9 +109,9 @@ const AddMissionForm = ({ onAddMission, onCancel, defaultType = 'daily' }) => {
 
   const getTypeIcon = (type) => {
     switch (type) {
-      case 'daily': return '☀️'
-      case 'weekly': return '📅'
-      case 'campaign': return '🏆'
+      case 'daily': return '💻'
+      case 'weekly': return '📊'
+      case 'campaign': return '🚀'
       default: return '📋'
     }
   }
@@ -121,7 +121,7 @@ const AddMissionForm = ({ onAddMission, onCancel, defaultType = 'daily' }) => {
       <div className="form-header">
         <h3 className="form-title">
           <span className="form-icon">➕</span>
-          Nova Missão
+          Nova Tarefa
         </h3>
       </div>
 
@@ -129,7 +129,7 @@ const AddMissionForm = ({ onAddMission, onCancel, defaultType = 'daily' }) => {
         <div className="form-row">
           <div className="form-group">
             <label htmlFor="title" className="form-label">
-              Título da Missão *
+              Título da Tarefa *
             </label>
             <input
               type="text"
@@ -138,7 +138,7 @@ const AddMissionForm = ({ onAddMission, onCancel, defaultType = 'daily' }) => {
               value={formData.title}
               onChange={handleChange}
               className={`form-input ${errors.title ? 'error' : ''}`}
-              placeholder="Ex: Beber 2L de água"
+              placeholder="Ex: Estudar React por 2 horas"
               maxLength={100}
             />
             {errors.title && <span className="error-message">{errors.title}</span>}
@@ -156,7 +156,7 @@ const AddMissionForm = ({ onAddMission, onCancel, defaultType = 'daily' }) => {
               value={formData.description}
               onChange={handleChange}
               className={`form-textarea ${errors.description ? 'error' : ''}`}
-              placeholder="Descreva sua missão..."
+              placeholder="Descreva sua tarefa de desenvolvimento..."
               rows={3}
               maxLength={500}
             />
@@ -167,7 +167,7 @@ const AddMissionForm = ({ onAddMission, onCancel, defaultType = 'daily' }) => {
         <div className="form-row">
           <div className="form-group">
             <label htmlFor="type" className="form-label">
-              Tipo da Missão
+              Tipo da Tarefa
             </label>
             <select
               id="type"
@@ -178,7 +178,7 @@ const AddMissionForm = ({ onAddMission, onCancel, defaultType = 'daily' }) => {
             >
               <option value="daily">{getTypeIcon('daily')} Diária</option>
               <option value="weekly">{getTypeIcon('weekly')} Semanal</option>
-              <option value="campaign">{getTypeIcon('campaign')} Campanha</option>
+              <option value="campaign">{getTypeIcon('campaign')} Projeto</option>
             </select>
           </div>
 
@@ -220,7 +220,7 @@ const AddMissionForm = ({ onAddMission, onCancel, defaultType = 'daily' }) => {
 
           <div className="form-group">
             <label htmlFor="goldReward" className="form-label">
-              Recompensa Ouro
+              Recompensa Pontos
             </label>
             <input
               type="number"
@@ -265,7 +265,7 @@ const AddMissionForm = ({ onAddMission, onCancel, defaultType = 'daily' }) => {
             type="submit"
             className="submit-btn"
           >
-            ✅ Criar Missão
+            ✅ Criar Tarefa
           </button>
         </div>
       </form>

@@ -45,8 +45,8 @@ const LoginForm = ({ onSwitchToRegister }) => {
     <div className="auth-form-container">
       <div className="auth-form">
         <div className="auth-header">
-          <h2>🎮 Entrar no HabitQuest</h2>
-          <p>Continue sua jornada épica!</p>
+          <h2>💻 Entrar no HabitDev</h2>
+          <p>Continue sua jornada de desenvolvimento!</p>
         </div>
 
         <form onSubmit={handleSubmit} className="auth-form-content">
@@ -118,7 +118,7 @@ const LoginForm = ({ onSwitchToRegister }) => {
 
         <div className="auth-footer">
           <p>
-            Novo no HabitQuest?{' '}
+            Novo no HabitDev?{' '}
             <button 
               type="button" 
               className="switch-form-btn"

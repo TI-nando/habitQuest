@@ -14,7 +14,7 @@ const ResourceManager = ({ heroData, onUpdateResources, onRestoreEnergy, onResto
       max: heroData?.maxEnergy || 100,
       restoreRate: 1, // 1 energia por minuto
       restoreInterval: 60000, // 1 minuto em ms
-      restoreCost: 10, // custo em ouro para restaurar instantaneamente
+      restoreCost: 10, // custo em pontos para restaurar instantaneamente
       icon: '⚡',
       color: '#FFD700',
       name: 'Energia'
@@ -23,7 +23,7 @@ const ResourceManager = ({ heroData, onUpdateResources, onRestoreEnergy, onResto
       max: heroData?.maxHealth || 100,
       restoreRate: 2, // 2 vida por minuto
       restoreInterval: 60000, // 1 minuto em ms
-      restoreCost: 15, // custo em ouro para restaurar instantaneamente
+      restoreCost: 15, // custo em pontos para restaurar instantaneamente
       icon: '❤️',
       color: '#FF4444',
       name: 'Vida'
@@ -89,7 +89,7 @@ const ResourceManager = ({ heroData, onUpdateResources, onRestoreEnergy, onResto
     try {
       const energyToRestore = RESOURCE_CONFIG.energy.max - heroData.energy
       
-      // Custar ouro e restaurar energia
+      // Custar pontos e restaurar energia
       onUpdateResources(-RESOURCE_CONFIG.energy.restoreCost, energyToRestore, 0)
       
       // Atualizar tempo de última restauração
@@ -119,7 +119,7 @@ const ResourceManager = ({ heroData, onUpdateResources, onRestoreEnergy, onResto
     try {
       const healthToRestore = RESOURCE_CONFIG.health.max - heroData.health
       
-      // Custar ouro e restaurar vida
+      // Custar pontos e restaurar vida
       onUpdateResources(-RESOURCE_CONFIG.health.restoreCost, 0, healthToRestore)
       
       // Atualizar tempo de última restauração
@@ -264,10 +264,10 @@ const ResourceManager = ({ heroData, onUpdateResources, onRestoreEnergy, onResto
       <div className="resource-tips">
         <h4>💡 Dicas de Recursos</h4>
         <ul>
-          <li>Energia é necessária para completar missões</li>
-          <li>Vida diminui quando você falha em missões diárias</li>
+          <li>Energia é necessária para completar tarefas</li>
+          <li>Vida diminui quando você falha em tarefas diárias</li>
           <li>Recursos se restauram automaticamente com o tempo</li>
-          <li>Use ouro para restauração instantânea quando necessário</li>
+          <li>Use pontos para restauração instantânea quando necessário</li>
         </ul>
       </div>
     </div>

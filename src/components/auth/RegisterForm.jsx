@@ -84,8 +84,8 @@ const RegisterForm = ({ onSwitchToLogin }) => {
     <div className="auth-form-container">
       <div className="auth-form">
         <div className="auth-header">
-          <h2>🌟 Junte-se ao HabitQuest</h2>
-          <p>Comece sua jornada épica de crescimento pessoal!</p>
+          <h2>🚀 Junte-se ao HabitDev</h2>
+          <p>Comece sua jornada de crescimento profissional!</p>
         </div>
 
         <form onSubmit={handleSubmit} className="auth-form-content">

@@ -10,23 +10,23 @@ const UserProfile = () => {
   const [editData, setEditData] = useState({
     username: user?.username || '',
     email: user?.email || '',
-    avatar: user?.avatar || '🎮',
-    title: user?.title || 'Aventureiro Iniciante'
+    avatar: user?.avatar || '💻',
+    title: user?.title || 'Desenvolvedor Iniciante'
   });
   const [errors, setErrors] = useState({});
 
   const avatarOptions = [
-    '🎮', '⚔️', '🏆', '🌟', '🔥', '💎', '🚀', '🎯',
-    '🦸', '🧙', '🏃', '💪', '🎨', '📚', '🎵', '🌈'
+    '💻', '⚡', '🚀', '🔧', '🖥️', '📱', '⌨️', '🖱️',
+    '🔌', '💾', '🔍', '📊', '🎯', '🏆', '⭐', '🌟'
   ];
 
   const titleOptions = [
-    'Aventureiro Iniciante',
-    'Explorador Corajoso',
-    'Guerreiro Determinado',
-    'Mestre das Missões',
-    'Lenda Viva',
-    'Conquistador Épico'
+    'Desenvolvedor Iniciante',
+    'Desenvolvedor Junior',
+    'Desenvolvedor Pleno',
+    'Desenvolvedor Senior',
+    'Desenvolvedor Mestre',
+    'Arquiteto de Software'
   ];
 
   const handleInputChange = (e) => {
@@ -97,7 +97,7 @@ const UserProfile = () => {
       username: user?.username || '',
       email: user?.email || '',
       avatar: user?.avatar || '🎮',
-      title: user?.title || 'Aventureiro Iniciante'
+      title: user?.title || 'Desenvolvedor Iniciante'
     });
     setIsEditing(false);
     setErrors({});
@@ -180,7 +180,7 @@ const UserProfile = () => {
                 </div>
 
                 <div className="form-group form-group-full">
-                  <label htmlFor="title">Título do Aventureiro</label>
+                  <label htmlFor="title">Título do Desenvolvedor</label>
                   <select
                     id="title"
                     name="title"
@@ -248,7 +248,7 @@ const UserProfile = () => {
           <div className="stat-card">
             <div className="stat-icon">💰</div>
             <div className="stat-info">
-              <span className="stat-label">Ouro</span>
+              <span className="stat-label">Pontos</span>
               <span className="stat-value">{user.gold}</span>
             </div>
           </div>

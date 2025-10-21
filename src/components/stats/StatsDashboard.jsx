@@ -113,7 +113,7 @@ const StatsDashboard = ({ heroData, missions = [] }) => {
           <div className="stat-icon">🪙</div>
           <div className="stat-content">
             <div className="stat-value">{generalStats.totalGold.toLocaleString()}</div>
-            <div className="stat-label">Ouro</div>
+            <div className="stat-label">Pontos</div>
           </div>
         </div>
 

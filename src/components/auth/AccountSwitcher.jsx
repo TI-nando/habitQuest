@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { useAuth } from '../../hooks/useAuth'
-import { load } from '../../utils/storage'
+import { storage } from '../../utils/storage'
 import './AccountSwitcher.css'
 
 const AccountSwitcher = ({ onClose }) => {
@@ -13,7 +13,7 @@ const AccountSwitcher = ({ onClose }) => {
 
   useEffect(() => {
     // Carregar usuários disponíveis (exceto o atual)
-    const users = load('users') || []
+    const users = storage.load('users') || []
     const otherUsers = users.filter(u => u.id !== user?.id)
     setAvailableUsers(otherUsers)
   }, [user])

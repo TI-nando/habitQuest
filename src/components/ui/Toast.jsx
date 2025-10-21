@@ -6,15 +6,20 @@ const Toast = ({ message, type = 'success', duration = 3000, onClose }) => {
   const [isExiting, setIsExiting] = useState(false);
 
   useEffect(() => {
-    // Mostrar o toast
-    setIsVisible(true);
+    // Mostrar o toast com animação
+    const showTimer = setTimeout(() => {
+      setIsVisible(true);
+    }, 50);
 
     // Configurar timer para fechar
-    const timer = setTimeout(() => {
+    const closeTimer = setTimeout(() => {
       handleClose();
     }, duration);
 
-    return () => clearTimeout(timer);
+    return () => {
+      clearTimeout(showTimer);
+      clearTimeout(closeTimer);
+    };
   }, [duration]);
 
   const handleClose = () => {
@@ -22,7 +27,7 @@ const Toast = ({ message, type = 'success', duration = 3000, onClose }) => {
     setTimeout(() => {
       setIsVisible(false);
       onClose && onClose();
-    }, 300);
+    }, 400);
   };
 
   const getIcon = () => {
@@ -43,14 +48,14 @@ const Toast = ({ message, type = 'success', duration = 3000, onClose }) => {
   if (!isVisible) return null;
 
   return (
-    <div className={`toast toast-${type} ${isExiting ? 'toast-exit' : 'toast-enter'}`}>
-      <div className="toast-icon">
+    <div className={`toast toast-${type} ${isExiting ? 'animate-slideOutRight' : 'animate-fadeInRight'} ${type === 'level' ? 'animate-bounceIn' : ''}`}>
+      <div className={`toast-icon ${type === 'xp' ? 'animate-pulse' : type === 'gold' ? 'animate-coinFlip' : type === 'level' ? 'animate-sparkle' : 'animate-scaleIn'}`}>
         {getIcon()}
       </div>
       <div className="toast-content">
-        <div className="toast-message">{message}</div>
+        <div className={`toast-message ${type === 'xp' ? 'xp-number' : type === 'gold' ? 'gold-number' : ''}`}>{message}</div>
       </div>
-      <button className="toast-close" onClick={handleClose}>
+      <button className="toast-close hover-glow" onClick={handleClose}>
         ×
       </button>
     </div>
