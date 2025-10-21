@@ -154,12 +154,15 @@
 
 .profile-actions {
   display: flex;
-  gap: 12px;
+  gap: 16px;
   flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
 }
 
 .edit-btn, .logout-btn, .save-btn, .cancel-btn {
-  padding: 12px 20px;
+  padding: 14px 24px;
   border: 2px solid var(--border-neon);
   border-radius: 12px;
   font-weight: 600;
@@ -167,11 +170,15 @@
   transition: all var(--transition-normal);
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 8px;
   font-size: 0.95rem;
   font-family: var(--font-retro-primary) !important;
   text-transform: uppercase;
   letter-spacing: 1px;
+  min-width: 140px;
+  min-height: 48px;
+  text-align: center;
 }
 
 .edit-btn {
@@ -407,11 +414,17 @@
 .btn-icon {
   font-size: 1.2rem;
   filter: drop-shadow(0 0 5px currentColor);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .btn-text {
   font-weight: 700;
   letter-spacing: 1px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 /* Responsividade para o formulário */
@@ -649,6 +662,13 @@
   
   .profile-actions {
     justify-content: center;
+    gap: 12px;
+  }
+  
+  .edit-btn, .logout-btn {
+    min-width: 120px;
+    padding: 12px 20px;
+    font-size: 0.9rem;
   }
   
   .stats-grid {
