@@ -1,10 +1,10 @@
 // Utilitários para persistência de dados no localStorage
 
-const STORAGE_KEYS = {
-  HERO_DATA: 'habitquest_hero_data',
-  MISSIONS: 'habitquest_missions',
-  ACHIEVEMENTS: 'habitquest_achievements',
-  SETTINGS: 'habitquest_settings'
+export const STORAGE_KEYS = {
+  HERO_DATA: 'habitdev_hero_data',
+  MISSIONS: 'habitdev_missions',
+  ACHIEVEMENTS: 'habitdev_achievements',
+  SETTINGS: 'habitdev_settings'
 }
 
 // Função para gerar chaves específicas do usuário
@@ -80,7 +80,7 @@ export const storage = {
 
 // Dados padrão do herói
 export const getDefaultHeroData = () => ({
-  name: 'Herói',
+  name: 'Desenvolvedor',
   level: 1,
   xp: 0,
   gold: 100,
@@ -257,9 +257,7 @@ export const calculateMissionRewards = (mission) => {
   }
 }
 
-export { STORAGE_KEYS }
-
-// Exportações individuais para compatibilidade
+// Exportações adicionais para compatibilidade
 export const load = storage.load
 export const save = storage.save
 export const remove = storage.remove

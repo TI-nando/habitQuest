@@ -53,7 +53,7 @@ const useNotifications = () => {
   const showGoldGain = useCallback((goldAmount, message) => {
     return addNotification({
       type: 'gold',
-      title: `+${goldAmount} Ouro Ganho!`,
+      title: `+${goldAmount} Pontos Ganhos!`,
       message,
       rewards: { gold: goldAmount }
     })
@@ -64,6 +64,14 @@ const useNotifications = () => {
       type: 'level',
       title: `Nível ${newLevel} Alcançado!`,
       message: message || 'Parabéns! Você subiu de nível!'
+    })
+  }, [addNotification])
+
+  const showTitleChange = useCallback((newTitle, message) => {
+    return addNotification({
+      type: 'achievement',
+      title: `Novo Título Conquistado!`,
+      message: message || `Você agora é um ${newTitle}!`
     })
   }, [addNotification])
 
@@ -91,7 +99,7 @@ const useNotifications = () => {
   const showMissionComplete = useCallback((missionTitle, rewards) => {
     return addNotification({
       type: 'success',
-      title: 'Missão Completa!',
+      title: 'Tarefa Completa!',
       message: `"${missionTitle}" foi concluída com sucesso!`,
       rewards
     })
@@ -146,6 +154,7 @@ const useNotifications = () => {
     showXPGain,
     showGoldGain,
     showLevelUp,
+    showTitleChange,
     showAchievement,
     showMissionComplete,
     showWarning,

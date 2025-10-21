@@ -19,9 +19,9 @@ export const ACHIEVEMENTS = {
   // Conquistas de Missões
   FIRST_MISSION: {
     id: 'first_mission',
-    title: 'Primeira Aventura',
-    description: 'Complete sua primeira missão',
-    icon: '🎯',
+    title: 'Primeira Tarefa',
+    description: 'Complete sua primeira tarefa de desenvolvimento',
+    icon: '💻',
     category: ACHIEVEMENT_CATEGORIES.MISSIONS,
     type: ACHIEVEMENT_TYPES.MILESTONE,
     requirement: { missions: 1 },
@@ -31,9 +31,9 @@ export const ACHIEVEMENTS = {
   
   MISSION_VETERAN: {
     id: 'mission_veteran',
-    title: 'Veterano das Missões',
-    description: 'Complete 10 missões',
-    icon: '⚔️',
+    title: 'Desenvolvedor Experiente',
+    description: 'Complete 10 tarefas de desenvolvimento',
+    icon: '⚡',
     category: ACHIEVEMENT_CATEGORIES.MISSIONS,
     type: ACHIEVEMENT_TYPES.COUNTER,
     requirement: { missions: 10 },
@@ -43,9 +43,9 @@ export const ACHIEVEMENTS = {
   
   MISSION_MASTER: {
     id: 'mission_master',
-    title: 'Mestre das Missões',
-    description: 'Complete 50 missões',
-    icon: '🏆',
+    title: 'Mestre do Código',
+    description: 'Complete 50 tarefas de desenvolvimento',
+    icon: '🚀',
     category: ACHIEVEMENT_CATEGORIES.MISSIONS,
     type: ACHIEVEMENT_TYPES.COUNTER,
     requirement: { missions: 50 },
@@ -55,9 +55,9 @@ export const ACHIEVEMENTS = {
   
   MISSION_LEGEND: {
     id: 'mission_legend',
-    title: 'Lenda das Missões',
-    description: 'Complete 100 missões',
-    icon: '👑',
+    title: 'Lenda da Programação',
+    description: 'Complete 100 tarefas de desenvolvimento',
+    icon: '🏆',
     category: ACHIEVEMENT_CATEGORIES.MISSIONS,
     type: ACHIEVEMENT_TYPES.COUNTER,
     requirement: { missions: 100 },
@@ -82,7 +82,7 @@ export const ACHIEVEMENTS = {
     id: 'experienced',
     title: 'Experiente',
     description: 'Alcance o nível 10',
-    icon: '🌟',
+    icon: '⭐',
     category: ACHIEVEMENT_CATEGORIES.LEVELS,
     type: ACHIEVEMENT_TYPES.MILESTONE,
     requirement: { level: 10 },
@@ -131,7 +131,7 @@ export const ACHIEVEMENTS = {
     id: 'streak_keeper',
     title: 'Guardião da Sequência',
     description: 'Mantenha uma sequência de 7 dias',
-    icon: '🔥',
+    icon: '⚡',
     category: ACHIEVEMENT_CATEGORIES.STREAKS,
     type: ACHIEVEMENT_TYPES.STREAK,
     requirement: { streak: 7 },
@@ -143,7 +143,7 @@ export const ACHIEVEMENTS = {
     id: 'streak_master',
     title: 'Mestre da Consistência',
     description: 'Mantenha uma sequência de 30 dias',
-    icon: '🔥',
+    icon: '🚀',
     category: ACHIEVEMENT_CATEGORIES.STREAKS,
     type: ACHIEVEMENT_TYPES.STREAK,
     requirement: { streak: 30 },
@@ -154,9 +154,9 @@ export const ACHIEVEMENTS = {
   // Conquistas de Recursos
   GOLD_COLLECTOR: {
     id: 'gold_collector',
-    title: 'Colecionador de Ouro',
-    description: 'Acumule 1000 moedas de ouro',
-    icon: '🪙',
+    title: 'Colecionador de Pontos',
+    description: 'Acumule 1000 pontos',
+    icon: '🎯',
     category: ACHIEVEMENT_CATEGORIES.RESOURCES,
     type: ACHIEVEMENT_TYPES.COUNTER,
     requirement: { totalGold: 1000 },
@@ -166,9 +166,9 @@ export const ACHIEVEMENTS = {
   
   GOLD_HOARDER: {
     id: 'gold_hoarder',
-    title: 'Acumulador de Riquezas',
-    description: 'Acumule 5000 moedas de ouro',
-    icon: '💰',
+    title: 'Acumulador de Conquistas',
+    description: 'Acumule 5000 pontos',
+    icon: '💎',
     category: ACHIEVEMENT_CATEGORIES.RESOURCES,
     type: ACHIEVEMENT_TYPES.COUNTER,
     requirement: { totalGold: 5000 },
@@ -180,7 +180,7 @@ export const ACHIEVEMENTS = {
     id: 'xp_hunter',
     title: 'Caçador de Experiência',
     description: 'Ganhe 5000 pontos de XP',
-    icon: '⭐',
+    icon: '📊',
     category: ACHIEVEMENT_CATEGORIES.RESOURCES,
     type: ACHIEVEMENT_TYPES.COUNTER,
     requirement: { totalXP: 5000 },
@@ -191,8 +191,8 @@ export const ACHIEVEMENTS = {
   // Conquistas Especiais
   EARLY_BIRD: {
     id: 'early_bird',
-    title: 'Madrugador',
-    description: 'Complete uma missão antes das 8h',
+    title: 'Desenvolvedor Matinal',
+    description: 'Complete uma tarefa antes das 8h',
     icon: '🌅',
     category: ACHIEVEMENT_CATEGORIES.SPECIAL,
     type: ACHIEVEMENT_TYPES.SPECIAL,
@@ -203,9 +203,9 @@ export const ACHIEVEMENTS = {
   
   NIGHT_OWL: {
     id: 'night_owl',
-    title: 'Coruja Noturna',
-    description: 'Complete uma missão depois das 22h',
-    icon: '🦉',
+    title: 'Programador Noturno',
+    description: 'Complete uma tarefa depois das 22h',
+    icon: '🌙',
     category: ACHIEVEMENT_CATEGORIES.SPECIAL,
     type: ACHIEVEMENT_TYPES.SPECIAL,
     requirement: { lateMission: true },
@@ -216,7 +216,7 @@ export const ACHIEVEMENTS = {
   PERFECTIONIST: {
     id: 'perfectionist',
     title: 'Perfeccionista',
-    description: 'Complete 10 missões difíceis',
+    description: 'Complete 10 tarefas difíceis',
     icon: '💯',
     category: ACHIEVEMENT_CATEGORIES.SPECIAL,
     type: ACHIEVEMENT_TYPES.COUNTER,

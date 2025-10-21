@@ -14,6 +14,7 @@ import {
   calculateLevelBonuses,
   simulateXPGain
 } from '../utils/levelSystem'
+import { checkTitleChange } from '../utils/developerTitles'
 import { useAuth } from './useAuth'
 
 export const useHero = () => {
@@ -79,6 +80,7 @@ export const useHero = () => {
     if (!heroData || amount <= 0) return { leveledUp: false }
 
     const simulation = simulateXPGain(heroData.xp, amount)
+    const titleChange = checkTitleChange(heroData.level, simulation.levelUp.newLevel)
     
     const updatedHero = {
       ...heroData,
@@ -106,7 +108,8 @@ export const useHero = () => {
     return {
       ...simulation.levelUp,
       xpGained: amount,
-      newBonuses: simulation.newBonuses
+      newBonuses: simulation.newBonuses,
+      titleChange
     }
   }, [heroData, saveHero])
 

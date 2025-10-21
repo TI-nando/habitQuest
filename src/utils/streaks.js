@@ -8,10 +8,10 @@ export const STREAK_TYPES = {
 
 export const STREAK_REWARDS = {
   3: { xp: 50, gold: 25, title: 'Iniciante Consistente' },
-  7: { xp: 150, gold: 75, title: 'Guerreiro Semanal' },
-  14: { xp: 300, gold: 150, title: 'Campeão Quinzenal' },
-  30: { xp: 750, gold: 375, title: 'Lenda Mensal' },
-  60: { xp: 1500, gold: 750, title: 'Mestre da Disciplina' },
+  7: { xp: 150, gold: 75, title: 'Desenvolvedor Consistente' },
+    14: { xp: 500, gold: 250, title: 'Programador Dedicado' },
+    30: { xp: 750, gold: 375, title: 'Desenvolvedor Disciplinado' },
+    60: { xp: 1500, gold: 750, title: 'Mestre da Consistência' },
   100: { xp: 3000, gold: 1500, title: 'Imortal da Consistência' }
 }
 

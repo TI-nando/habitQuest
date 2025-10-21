@@ -35,7 +35,7 @@ const useToast = () => {
   }, [showToast]);
 
   const showGoldToast = useCallback((gold, duration = 2000) => {
-    return showToast(`+${gold} Ouro ganho! 💰`, 'gold', duration);
+    return showToast(`+${gold} Pontos ganhos! 💰`, 'gold', duration);
   }, [showToast]);
 
   const showLevelUpToast = useCallback((level, duration = 3000) => {
