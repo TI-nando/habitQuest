@@ -2,7 +2,7 @@
 
 > **Transforme sua produtividade em uma aventura épica!**
 
-HabitQuest é uma aplicação web gamificada que transforma suas tarefas diárias em missões de RPG. Complete missões, ganhe XP, suba de nível e torne-se o herói da sua própria jornada de produtividade!
+HabitDev é uma aplicação web gamificada que transforma suas tarefas diárias em missões de RPG. Complete missões, ganhe XP, suba de nível e torne-se o herói da sua própria jornada de produtividade!
 
 ## ✨ Funcionalidades
 
