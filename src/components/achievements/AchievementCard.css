@@ -38,7 +38,6 @@
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
 
-/* Raridades */
 .achievement-card.common {
   --glow-color: rgba(158, 158, 158, 0.3);
 }
