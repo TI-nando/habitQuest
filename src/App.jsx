@@ -115,11 +115,18 @@ const GameDashboard = () => {
   // Função para completar missão com notificações
   const handleCompleteMission = async (missionId) => {
     try {
-      const mission = missions.find(m => m.id === missionId)
+      // Criar array de todas as missões para buscar
+      const allMissions = [
+        ...(missions.daily || []).map(m => ({ ...m, type: 'daily' })),
+        ...(missions.weekly || []).map(m => ({ ...m, type: 'weekly' })),
+        ...(missions.campaign || []).map(m => ({ ...m, type: 'campaign' }))
+      ]
+      
+      const mission = allMissions.find(m => m.id === missionId)
       if (!mission) return
 
       // Completar a missão
-      const completedMission = await completeMission(missionId)
+      const completedMission = await completeMission(missionId, mission.type)
       
       // Ganhar XP e ouro
       const xpGained = gainXP(mission.rewards.xp, 'missions')
@@ -177,10 +184,7 @@ const GameDashboard = () => {
         return (
           <HeroDashboard 
             heroData={heroData}
-            onUpdateResources={updateResources}
             getXPProgress={getXPProgress}
-            onRestoreEnergy={() => showXPGain('Energia restaurada!', 0)}
-            onRestoreHealth={() => showSuccess('Saúde restaurada!')}
           />
         )
       case 'missions':
