@@ -1,4 +1,4 @@
-# 🎮 HabitQuest RPG
+# 🎮 HabitDev
 
 > **Transforme sua produtividade em uma aventura épica!**
 
