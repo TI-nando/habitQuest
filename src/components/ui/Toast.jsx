@@ -37,7 +37,7 @@ const Toast = ({ message, type = 'success', duration = 3000, onClose }) => {
       case 'xp':
         return '⭐';
       case 'gold':
-        return '💰';
+        return '⭐';
       case 'level':
         return '🚀';
       default:

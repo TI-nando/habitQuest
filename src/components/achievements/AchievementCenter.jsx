@@ -109,7 +109,7 @@ const AchievementCenter = ({ heroData }) => {
       [ACHIEVEMENT_CATEGORIES.MISSIONS]: '🎯',
       [ACHIEVEMENT_CATEGORIES.LEVELS]: '📈',
       [ACHIEVEMENT_CATEGORIES.STREAKS]: '🔥',
-      [ACHIEVEMENT_CATEGORIES.RESOURCES]: '💰',
+      [ACHIEVEMENT_CATEGORIES.RESOURCES]: '⭐',
       [ACHIEVEMENT_CATEGORIES.SPECIAL]: '⭐'
     }
     return icons[category] || '🏆'

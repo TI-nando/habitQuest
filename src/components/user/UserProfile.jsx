@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 import { useAuth } from '../../hooks/useAuth';
+import { useHero } from '../../hooks/useHero';
 import AccountSwitcher from '../auth/AccountSwitcher';
 import './UserProfile.css';
 
 const UserProfile = () => {
   const { user, updateProfile, logout } = useAuth();
+  const { heroData } = useHero();
   const [isEditing, setIsEditing] = useState(false);
   const [showAccountSwitcher, setShowAccountSwitcher] = useState(false);
   const [editData, setEditData] = useState({
@@ -233,7 +235,7 @@ const UserProfile = () => {
             <div className="stat-icon">⭐</div>
             <div className="stat-info">
               <span className="stat-label">Level</span>
-              <span className="stat-value">{user.level}</span>
+              <span className="stat-value">{heroData?.level || 1}</span>
             </div>
           </div>
 
@@ -241,15 +243,7 @@ const UserProfile = () => {
             <div className="stat-icon">🎯</div>
             <div className="stat-info">
               <span className="stat-label">XP Total</span>
-              <span className="stat-value">{user.xp}</span>
-            </div>
-          </div>
-
-          <div className="stat-card">
-            <div className="stat-icon">💰</div>
-            <div className="stat-info">
-              <span className="stat-label">Pontos</span>
-              <span className="stat-value">{user.gold}</span>
+              <span className="stat-value">{heroData?.xp || 0}</span>
             </div>
           </div>
 
@@ -257,7 +251,7 @@ const UserProfile = () => {
             <div className="stat-icon">📋</div>
             <div className="stat-info">
               <span className="stat-label">Missões Totais</span>
-              <span className="stat-value">{user.stats?.totalMissions || 0}</span>
+              <span className="stat-value">{heroData?.stats?.totalMissions || 0}</span>
             </div>
           </div>
 
@@ -265,7 +259,7 @@ const UserProfile = () => {
             <div className="stat-icon">✅</div>
             <div className="stat-info">
               <span className="stat-label">Missões Completas</span>
-              <span className="stat-value">{user.stats?.completedMissions || 0}</span>
+              <span className="stat-value">{heroData?.stats?.missionsCompleted || 0}</span>
             </div>
           </div>
 
@@ -273,7 +267,7 @@ const UserProfile = () => {
             <div className="stat-icon">🔥</div>
             <div className="stat-info">
               <span className="stat-label">Sequência Atual</span>
-              <span className="stat-value">{user.stats?.currentStreak || 0}</span>
+              <span className="stat-value">{heroData?.stats?.currentStreak || 0}</span>
             </div>
           </div>
         </div>

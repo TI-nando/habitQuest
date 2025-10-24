@@ -29,7 +29,6 @@ describe('HeroProfile', () => {
     expect(screen.getByText('Test Hero')).toBeInTheDocument()
     expect(screen.getByText('Nível 5')).toBeInTheDocument()
     expect(screen.getByText('150')).toBeInTheDocument() // Gold
-    expect(screen.getByText('80/100')).toBeInTheDocument() // Energy
   })
 
   it('displays XP progress correctly', () => {
@@ -41,7 +40,7 @@ describe('HeroProfile', () => {
     )
 
     expect(screen.getByText('75')).toBeInTheDocument()
-    expect(screen.getByText('/100 XP')).toBeInTheDocument()
+    expect(screen.getByText('100 XP')).toBeInTheDocument()
   })
 
   it('shows hero avatar', () => {

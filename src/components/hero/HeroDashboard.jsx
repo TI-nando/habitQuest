@@ -1,16 +1,11 @@
 import React from 'react'
 import HeroProfile from './HeroProfile'
 import HeroStats from './HeroStats'
-import ResourceManager from './ResourceManager'
 import './HeroDashboard.css'
 
 const HeroDashboard = ({ 
   heroData, 
-  onGainXP, 
-  onUpdateResources, 
-  getXPProgress,
-  onRestoreEnergy,
-  onRestoreHealth 
+  getXPProgress
 }) => {
   if (!heroData) {
     return (
@@ -33,13 +28,6 @@ const HeroDashboard = ({
         <HeroProfile 
           heroData={heroData} 
           getXPProgress={getXPProgress}
-        />
-        
-        <ResourceManager
-          heroData={heroData}
-          onUpdateResources={onUpdateResources}
-          onRestoreEnergy={onRestoreEnergy}
-          onRestoreHealth={onRestoreHealth}
         />
         
         <HeroStats 

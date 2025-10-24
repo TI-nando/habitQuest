@@ -92,7 +92,7 @@ const MissionItem = ({ mission, onComplete, onDelete, onEdit }) => {
       
       if (goldGain > 0) {
         setTimeout(() => {
-          createFloatingText(`+${goldGain} 🪙`, 'gold-number animate-coinFlip')
+          createFloatingText(`+${goldGain} Pontos`, 'gold-number animate-scaleIn')
         }, 400)
       }
       
@@ -109,7 +109,7 @@ const MissionItem = ({ mission, onComplete, onDelete, onEdit }) => {
   return (
     <div 
       ref={itemRef}
-      className={`todo-item gamified-card animate-fadeInUp ${mission.isCompleted ? 'completed' : ''} ${isCompleting ? 'completing animate-shake' : ''}`}
+      className={`todo-item gamified-card animate-fadeInUp ${mission.completed ? 'completed' : ''} ${isCompleting ? 'completing animate-shake' : ''}`}
     >
       {/* Particles effect */}
       <div className="particles-container">
@@ -121,18 +121,18 @@ const MissionItem = ({ mission, onComplete, onDelete, onEdit }) => {
       {/* Checkbox */}
       <div className="todo-checkbox-container">
         <button
-          className={`todo-checkbox gamified-button hover-glow ${mission.isCompleted ? 'checked animate-bounceIn' : ''}`}
+          className={`todo-checkbox gamified-button hover-glow ${mission.completed ? 'checked animate-bounceIn' : ''}`}
           onClick={handleComplete}
-          disabled={isCompleting || mission.isCompleted}
+          disabled={isCompleting || mission.completed}
         >
-          {mission.isCompleted && '✓'}
+          {mission.completed && '✓'}
         </button>
       </div>
 
       {/* Content */}
       <div className="todo-content">
         <div className="todo-header">
-          <h3 className={`todo-title ${mission.isCompleted ? 'strikethrough' : ''}`}>
+          <h3 className={`todo-title ${mission.completed ? 'strikethrough' : ''}`}>
             {mission.title}
           </h3>
           <div className="todo-badges">
@@ -149,7 +149,7 @@ const MissionItem = ({ mission, onComplete, onDelete, onEdit }) => {
         </div>
 
         {mission.description && (
-          <p className={`todo-description ${mission.isCompleted ? 'faded' : ''}`}>
+          <p className={`todo-description ${mission.completed ? 'faded' : ''}`}>
             {mission.description}
           </p>
         )}
@@ -161,7 +161,7 @@ const MissionItem = ({ mission, onComplete, onDelete, onEdit }) => {
             </span>
             {(mission.rewards?.gold || mission.goldReward) && (
               <span className="reward-badge gold">
-                🪙 {mission.rewards?.gold || mission.goldReward} Pontos
+                ⭐ {mission.rewards?.gold || mission.goldReward} Pontos
               </span>
             )}
           </div>
@@ -176,7 +176,7 @@ const MissionItem = ({ mission, onComplete, onDelete, onEdit }) => {
 
       {/* Actions */}
       <div className="todo-actions">
-        {!mission.isCompleted && (
+        {!mission.completed && (
           <>
             <button 
               className="action-btn edit-btn hover-glow"

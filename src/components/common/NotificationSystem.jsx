@@ -34,7 +34,7 @@ const NotificationSystem = ({ notifications, onRemoveNotification }) => {
     switch (type) {
       case 'success': return '🎉'
       case 'xp': return '⭐'
-      case 'gold': return '🪙'
+      case 'gold': return '⭐' // Usando estrela para pontos também
       case 'level': return '🆙'
       case 'achievement': return '🏆'
       case 'warning': return '⚠️'
@@ -90,7 +90,7 @@ const NotificationSystem = ({ notifications, onRemoveNotification }) => {
                 )}
                 {notification.rewards.gold && (
                   <span className="reward-item animate-scaleIn">
-                    <span className="reward-icon animate-coinFlip">🪙</span>
+                    <span className="reward-icon animate-pulse">⭐</span>
                     +{notification.rewards.gold} Pontos
                   </span>
                 )}

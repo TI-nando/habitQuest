@@ -33,7 +33,7 @@ const MissionCenter = ({
     setShowAddForm(false)
   }
 
-  const completedCount = filteredMissions.filter(m => m.isCompleted).length
+  const completedCount = filteredMissions.filter(m => m.completed).length
   const totalCount = filteredMissions.length
 
   return (

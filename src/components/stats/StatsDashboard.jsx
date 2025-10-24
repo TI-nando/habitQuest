@@ -51,16 +51,47 @@ const StatsDashboard = ({ heroData, missions = [] }) => {
     ].filter(item => item.value > 0)
   }, [heroData])
 
-  // Dados para gráfico de progresso semanal (simulado)
+  // Dados para progresso de campanha (baseado em missões de campanha)
+  const campaignProgressData = useMemo(() => {
+    if (!missions || !missions.campaign) return { current: 0, total: 10, percentage: 0 }
+    
+    const campaignMissions = missions.campaign || []
+    const completedCampaign = campaignMissions.filter(mission => mission.completed).length
+    const totalCampaign = Math.max(campaignMissions.length, 10) // Mínimo de 10 para mostrar progresso
+    const percentage = totalCampaign > 0 ? (completedCampaign / totalCampaign) * 100 : 0
+    
+    return {
+      current: completedCampaign,
+      total: totalCampaign,
+      percentage: Math.round(percentage)
+    }
+  }, [missions])
+
+  // Dados para gráfico de progresso semanal (baseado em missões reais)
   const weeklyProgressData = useMemo(() => {
     const days = ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb']
-    const currentDay = new Date().getDay()
+    const today = new Date()
+    const weekStart = new Date(today.setDate(today.getDate() - today.getDay()))
     
-    return days.map((day, index) => ({
-      label: day,
-      value: index <= currentDay ? Math.floor(Math.random() * 5) + 1 : 0
-    }))
-  }, [])
+    return days.map((day, index) => {
+      const dayDate = new Date(weekStart)
+      dayDate.setDate(weekStart.getDate() + index)
+      
+      // Contar missões completadas neste dia
+      const dayMissions = missions ? 
+        [...(missions.daily || []), ...(missions.weekly || []), ...(missions.campaign || [])]
+          .filter(mission => {
+            if (!mission.completed || !mission.completedAt) return false
+            const completedDate = new Date(mission.completedAt)
+            return completedDate.toDateString() === dayDate.toDateString()
+          }).length : 0
+      
+      return {
+        label: day,
+        value: dayMissions
+      }
+    })
+  }, [missions])
 
   // Dados para gráfico de conquistas por raridade
   const achievementRarityData = useMemo(() => {
@@ -104,19 +135,6 @@ const StatsDashboard = ({ heroData, missions = [] }) => {
           </div>
         </div>
 
-        <div className="stat-card gold gamified-card">
-          <div className="particles-container">
-            <div className="particle"></div>
-            <div className="particle"></div>
-            <div className="particle"></div>
-          </div>
-          <div className="stat-icon">🪙</div>
-          <div className="stat-content">
-            <div className="stat-value">{generalStats.totalGold.toLocaleString()}</div>
-            <div className="stat-label">Pontos</div>
-          </div>
-        </div>
-
         <div className="stat-card missions gamified-card">
           <div className="particles-container">
             <div className="particle"></div>
@@ -151,10 +169,11 @@ const StatsDashboard = ({ heroData, missions = [] }) => {
           </div>
           <div className="stat-icon">🏆</div>
           <div className="stat-content">
-            <div className="stat-value">
-              {generalStats.achievementsUnlocked}/{generalStats.totalAchievements}
+            <div className="stat-value">{campaignProgressData.percentage}%</div>
+            <div className="stat-label">Progresso Campanha</div>
+            <div className="stat-subtitle">
+              {campaignProgressData.current}/{campaignProgressData.total} missões
             </div>
-            <div className="stat-label">Conquistas</div>
           </div>
         </div>
       </div>

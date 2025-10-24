@@ -24,7 +24,7 @@ const AchievementCard = ({
       rewards.push(`${achievement.rewards.xp} XP`)
     }
     if (achievement.rewards.gold) {
-      rewards.push(`${achievement.rewards.gold} 🪙`)
+      rewards.push(`${achievement.rewards.gold} Pontos`)
     }
     return rewards.join(' • ')
   }

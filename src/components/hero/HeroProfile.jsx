@@ -68,20 +68,28 @@ const HeroProfile = ({ heroData, getXPProgress }) => {
         </div>
       </div>
 
-      <div className="resources">
-        <div className="resource-item gold gamified-resource hover-glow">
-          <span className="resource-icon animate-coinFlip">💰</span>
-          <div className="resource-info">
-            <span className="resource-value gold-number">{heroData.gold}</span>
-            <span className="resource-label">Pontos</span>
+      <div className="points-section">
+        <div className="points-header">
+          <span className="points-icon animate-pulse">⭐</span>
+          <div className="points-info">
+            <span className="points-value gold-number">{Math.min(heroData.gold, 9999)}</span>
+            <span className="points-label">Pontos</span>
           </div>
         </div>
         
-        <div className="resource-item energy gamified-resource hover-glow">
-          <span className="resource-icon animate-pulse">⚡</span>
-          <div className="resource-info">
-            <span className="resource-value">{heroData.energy}/{heroData.maxEnergy}</span>
-            <span className="resource-label">Energia</span>
+        <div className="points-progress-container">
+          <div className="points-progress-bar gamified-progress">
+            <div className="progress-track">
+              <div 
+                className="progress-fill gamified-progress-fill"
+                style={{ width: `${Math.min((heroData.gold / 9999) * 100, 100)}%` }}
+              >
+                <div className="progress-shine"></div>
+              </div>
+            </div>
+            <div className="progress-percentage">
+              {Math.round(Math.min((heroData.gold / 9999) * 100, 100))}%
+            </div>
           </div>
         </div>
       </div>
