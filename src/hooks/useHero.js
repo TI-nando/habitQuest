@@ -15,6 +15,7 @@ import {
   simulateXPGain
 } from '../utils/levelSystem'
 import { checkTitleChange } from '../utils/developerTitles'
+import { updateStreak, STREAK_TYPES } from '../utils/streaks'
 import { useAuth } from './useAuth'
 
 export const useHero = () => {
@@ -82,14 +83,20 @@ export const useHero = () => {
     const simulation = simulateXPGain(heroData.xp, amount)
     const titleChange = checkTitleChange(heroData.level, simulation.levelUp.newLevel)
     
+    // Atualizar streak quando XP é ganho
+    const streakResult = updateStreak(heroData, STREAK_TYPES.XP_GAIN)
+    
     const updatedHero = {
       ...heroData,
       xp: simulation.newXP,
       level: simulation.levelUp.newLevel,
       bonuses: simulation.newBonuses,
+      streaks: heroData.streaks || {},
       stats: {
         ...heroData.stats,
         totalXPGained: heroData.stats.totalXPGained + amount,
+        currentStreak: streakResult.streak || heroData.stats.currentStreak || 0,
+        longestStreak: Math.max(streakResult.streak || 0, heroData.stats.longestStreak || 0),
         xpSources: {
           ...heroData.stats.xpSources,
           [source]: (heroData.stats.xpSources[source] || 0) + amount
@@ -109,7 +116,9 @@ export const useHero = () => {
       ...simulation.levelUp,
       xpGained: amount,
       newBonuses: simulation.newBonuses,
-      titleChange
+      titleChange,
+      streakUpdated: streakResult.updated,
+      currentStreak: streakResult.streak
     }
   }, [heroData, saveHero])
 
@@ -119,7 +128,7 @@ export const useHero = () => {
 
     const updatedHero = {
       ...heroData,
-      gold: Math.max(0, heroData.gold + gold),
+      gold: Math.max(0, Math.min(9999, heroData.gold + gold)), // Limite máximo de 9999
       energy: Math.max(0, Math.min(heroData.maxEnergy || 100, heroData.energy + energy)),
       health: Math.max(0, Math.min(heroData.maxHealth || 100, heroData.health + health)),
       stats: {

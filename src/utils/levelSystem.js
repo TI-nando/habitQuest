@@ -24,7 +24,7 @@ export const calculateXPForLevel = (level) => {
   
   let totalXP = 0
   for (let i = 2; i <= level; i++) {
-    totalXP += Math.floor(LEVEL_SYSTEM.BASE_XP * Math.pow(LEVEL_SYSTEM.GROWTH_MULTIPLIER, i - 2))
+    totalXP += Math.floor(LEVEL_SYSTEM.BASE_XP * Math.pow(1.2, i - 2))
   }
   
   return totalXP
@@ -34,7 +34,7 @@ export const calculateXPForLevel = (level) => {
 export const calculateXPForNextLevel = (currentLevel) => {
   if (currentLevel >= LEVEL_SYSTEM.MAX_LEVEL) return 0
   
-  return Math.floor(LEVEL_SYSTEM.BASE_XP * Math.pow(LEVEL_SYSTEM.GROWTH_MULTIPLIER, currentLevel - 1))
+  return Math.floor(LEVEL_SYSTEM.BASE_XP * Math.pow(1.2, currentLevel - 1))
 }
 
 // Calcula nível baseado no XP total
@@ -64,15 +64,29 @@ export const calculateCurrentLevelXP = (totalXP) => {
 }
 
 // Calcula progresso percentual para o próximo nível
-export const calculateLevelProgress = (totalXP) => {
-  const level = calculateLevelFromXP(totalXP)
+// Calcula progresso do nível atual
+export const calculateLevelProgress = (totalXP, currentLevel) => {
+  if (!currentLevel) {
+    currentLevel = calculateLevelFromXP(totalXP)
+  }
   
-  if (level >= LEVEL_SYSTEM.MAX_LEVEL) return 100
+  if (currentLevel >= LEVEL_SYSTEM.MAX_LEVEL) {
+    return {
+      current: 0,
+      needed: 0,
+      percentage: 100
+    }
+  }
   
   const currentLevelXP = calculateCurrentLevelXP(totalXP)
-  const xpForNextLevel = calculateXPForNextLevel(level)
+  const xpForNextLevel = calculateXPForNextLevel(currentLevel)
+  const percentage = xpForNextLevel > 0 ? Math.round((currentLevelXP / xpForNextLevel) * 100 * 100) / 100 : 100
   
-  return Math.floor((currentLevelXP / xpForNextLevel) * 100)
+  return {
+    current: currentLevelXP,
+    needed: xpForNextLevel,
+    percentage: percentage
+  }
 }
 
 // Verifica se houve level up

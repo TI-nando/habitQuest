@@ -95,6 +95,20 @@ export const getDefaultHeroData = () => ({
     maxHealthBonus: 0
   },
   achievements: [],
+  streaks: {
+    daily_missions: {
+      current: 0,
+      longest: 0,
+      lastDate: null,
+      history: []
+    },
+    xp_gain: {
+      current: 0,
+      longest: 0,
+      lastDate: null,
+      history: []
+    }
+  },
   stats: {
     missionsCompleted: 0,
     totalXPGained: 0,
